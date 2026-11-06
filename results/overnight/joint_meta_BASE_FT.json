@@ -1,0 +1,383 @@
+{
+  "mode": "joint",
+  "tag": "BASE_FT",
+  "source": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+  "source_name": "SVS_Baseline_no_compression",
+  "lambda_": 0.0,
+  "fusion": "none",
+  "codec_geo": false,
+  "nocodec": true,
+  "epochs": 40,
+  "lr_enc": 2e-05,
+  "lr_new": 0.0001,
+  "augmentation": true,
+  "seed": 0,
+  "train_file": "data/svs_bn_local.txt",
+  "n_train_tuples": 399,
+  "log": [
+    {
+      "detection_loss": 5.85509538092186,
+      "semantic_loss": 0.0005159055172294474,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 4.517667106817241,
+      "epoch": 1
+    },
+    {
+      "detection_loss": 3.663148332732662,
+      "semantic_loss": 0.0003813835305720801,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 3.417527006084758,
+      "epoch": 2
+    },
+    {
+      "detection_loss": 2.450809845948279,
+      "semantic_loss": 0.00033752033236406786,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 2.790175498278816,
+      "epoch": 3
+    },
+    {
+      "detection_loss": 1.611777974292636,
+      "semantic_loss": 0.00031261523254945135,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 2.3366663411147615,
+      "epoch": 4
+    },
+    {
+      "detection_loss": 1.0828273564082265,
+      "semantic_loss": 0.00029517791841854866,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 2.0337111205982983,
+      "epoch": 5
+    },
+    {
+      "detection_loss": 0.7649149163497757,
+      "semantic_loss": 0.00028117571320334555,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.8359018907809914,
+      "epoch": 6
+    },
+    {
+      "detection_loss": 0.553516440649043,
+      "semantic_loss": 0.00026520500186802165,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.691477350125038,
+      "epoch": 7
+    },
+    {
+      "detection_loss": 0.41681277895705743,
+      "semantic_loss": 0.000257086817275518,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.5852575349927247,
+      "epoch": 8
+    },
+    {
+      "detection_loss": 0.3201042736313285,
+      "semantic_loss": 0.00024181801645886992,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.5002733457058592,
+      "epoch": 9
+    },
+    {
+      "detection_loss": 0.30503967327572273,
+      "semantic_loss": 0.00023782205942479595,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.4650031411856936,
+      "epoch": 10
+    },
+    {
+      "detection_loss": 0.22425558867124387,
+      "semantic_loss": 0.00022579129159238707,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.3876339403310216,
+      "epoch": 11
+    },
+    {
+      "detection_loss": 0.18745447421927275,
+      "semantic_loss": 0.00021620705861768647,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.3376485336394537,
+      "epoch": 12
+    },
+    {
+      "detection_loss": 0.15851407063737474,
+      "semantic_loss": 0.00020912790989455416,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.293231799787746,
+      "epoch": 13
+    },
+    {
+      "detection_loss": 0.13679084110594258,
+      "semantic_loss": 0.0002431931417941041,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.2541394030539912,
+      "epoch": 14
+    },
+    {
+      "detection_loss": 0.11924132895667601,
+      "semantic_loss": 0.00019795807755163013,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.2185929493796557,
+      "epoch": 15
+    },
+    {
+      "detection_loss": 0.11704156685966,
+      "semantic_loss": 0.00019448689199452472,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.1955121178973587,
+      "epoch": 16
+    },
+    {
+      "detection_loss": 0.09812069461823332,
+      "semantic_loss": 0.00019344564450757092,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.1608896554263313,
+      "epoch": 17
+    },
+    {
+      "detection_loss": 0.09751727841654442,
+      "semantic_loss": 0.00018719559419990044,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.1415292619165023,
+      "epoch": 18
+    },
+    {
+      "detection_loss": 0.0822309279641636,
+      "semantic_loss": 0.00018632902768452215,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.111781684677105,
+      "epoch": 19
+    },
+    {
+      "detection_loss": 0.07311910886625599,
+      "semantic_loss": 0.00018300154294677423,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0879583170539455,
+      "epoch": 20
+    },
+    {
+      "detection_loss": 0.07895436066139798,
+      "semantic_loss": 0.0001812417300918109,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0779132592050653,
+      "epoch": 21
+    },
+    {
+      "detection_loss": 0.06659730699235447,
+      "semantic_loss": 0.00017742641506273706,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0537843184363573,
+      "epoch": 22
+    },
+    {
+      "detection_loss": 0.062474552111322045,
+      "semantic_loss": 0.0001762663222847035,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0378413978674657,
+      "epoch": 23
+    },
+    {
+      "detection_loss": 0.06233730939167895,
+      "semantic_loss": 0.0001741616429707367,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0264709188525838,
+      "epoch": 24
+    },
+    {
+      "detection_loss": 0.05823503928562453,
+      "semantic_loss": 0.00017278925326791707,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 1.0128051904508644,
+      "epoch": 25
+    },
+    {
+      "detection_loss": 0.052969936065534524,
+      "semantic_loss": 0.0001699408800177799,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9991130834832825,
+      "epoch": 26
+    },
+    {
+      "detection_loss": 0.05476549034121267,
+      "semantic_loss": 0.0001704536817421119,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9928643207502246,
+      "epoch": 27
+    },
+    {
+      "detection_loss": 0.04962359912189326,
+      "semantic_loss": 0.00016721756561711212,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9812915502933034,
+      "epoch": 28
+    },
+    {
+      "detection_loss": 0.04737424880107468,
+      "semantic_loss": 0.00016713657809997953,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9732537879083389,
+      "epoch": 29
+    },
+    {
+      "detection_loss": 0.04847831012830512,
+      "semantic_loss": 0.00016621677777925412,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9692514592543581,
+      "epoch": 30
+    },
+    {
+      "detection_loss": 0.044726371107492266,
+      "semantic_loss": 0.00016516561064557558,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9615452025169716,
+      "epoch": 31
+    },
+    {
+      "detection_loss": 0.04910984752293592,
+      "semantic_loss": 0.00016579218208789825,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9622517511958167,
+      "epoch": 32
+    },
+    {
+      "detection_loss": 0.042558629249565695,
+      "semantic_loss": 0.00016315963857732526,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9533096127641529,
+      "epoch": 33
+    },
+    {
+      "detection_loss": 0.041775852109172514,
+      "semantic_loss": 0.00016189926577965964,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9504384371571075,
+      "epoch": 34
+    },
+    {
+      "detection_loss": 0.042306092139426855,
+      "semantic_loss": 0.00016296201321076986,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9493744421124757,
+      "epoch": 35
+    },
+    {
+      "detection_loss": 0.042752585439174845,
+      "semantic_loss": 0.00016187338397664864,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9486995541063467,
+      "epoch": 36
+    },
+    {
+      "detection_loss": 0.04082821998255033,
+      "semantic_loss": 0.00016059565975244406,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9461487340449092,
+      "epoch": 37
+    },
+    {
+      "detection_loss": 0.041196995060295706,
+      "semantic_loss": 0.00016032922826240536,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9460966416767665,
+      "epoch": 38
+    },
+    {
+      "detection_loss": 0.04062056024984823,
+      "semantic_loss": 0.00016183787298168202,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.945362206837886,
+      "epoch": 39
+    },
+    {
+      "detection_loss": 0.042070483282630924,
+      "semantic_loss": 0.00016174531114835613,
+      "compression_loss": 0.0,
+      "bpp": 0.0,
+      "mse": 0.0,
+      "total": 0.9466980910838995,
+      "epoch": 40
+    }
+  ],
+  "minutes": 17.690824806690216,
+  "trainable_params_M": 56.646345,
+  "date": "2026-11-06T04:04:08",
+  "device": "NVIDIA GeForce RTX 4070 Ti SUPER"
+}

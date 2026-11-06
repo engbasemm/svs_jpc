@@ -1,0 +1,669 @@
+{
+  "meta": {
+    "date": "2026-11-06T13:03:32",
+    "host": "basem",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "torch": "2.4.1+cu121",
+    "cuda": "12.1",
+    "device": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "git_commit": "6f4fb7701e631db6dfcab61deaaa63f1b5098396",
+    "script": "/media/basem/Collection/Work/Academic/PHDWork/PHD_Topics/MTL/ValeoMTL/SynWoodScapePrj/omnidet/eval/evaluate_mic_mtl_v2.py",
+    "flags": {
+      "SPLITS": [
+        "val",
+        "test"
+      ],
+      "BN_RECALIB_N_tuples": 250,
+      "BN_RECALIB_SCOPE": "no_stats",
+      "BN_RECALIB_SEED": 0,
+      "PERCEPTION_INPUT": "float",
+      "RX_BN": "trained",
+      "RX_FT": false,
+      "CODEC_FT": false,
+      "RX_FT_SUFFIX": "_RXFT",
+      "SX_SLIM": false,
+      "SX_SUFFIX": "_SXSLIM",
+      "E2E": false,
+      "JOINT_RUNS": [
+        "BASE_FT",
+        "SWEEP_L0.03",
+        "SWEEP_L0.6",
+        "QUICK_SIDED_L0.6"
+      ],
+      "SENDER_ONLY": true,
+      "CODEC_PERC_JOINT": "",
+      "HEVC_QPS": [
+        31,
+        33,
+        36,
+        39,
+        42,
+        45
+      ],
+      "E2E_SUFFIX": "_E2E",
+      "CODECS": "all",
+      "SKIP_CODECS": true,
+      "VOID_INDEX": 0
+    },
+    "input_hw": [
+      288,
+      544
+    ],
+    "cameras": [
+      "FV",
+      "MVL",
+      "MVR",
+      "RV"
+    ],
+    "bpp_definition": "bits / (input_height x input_width) of one camera image, averaged over the four cameras",
+    "detection_conf_thres": 0.5,
+    "detection_nms_thres": 0.2,
+    "loader_settings": {
+      "dataset": "synwoodscape_raw",
+      "crop": false,
+      "input_height": 288,
+      "input_width": 544,
+      "dataset_dir": "SynWoodscape2021/",
+      "train_file": "data/train.txt",
+      "val_file": "svs_val_local.txt"
+    },
+    "models": {
+      "SVS_Baseline_no_compression": "res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/weights_99/39700",
+      "SVS_JPC_lam0.08": "res50_LDMIC0.08_FR_2Classes_yolo3_SVS/weights_117/46900",
+      "SVS_JPC_lam0.05": "res50_LDMIC0.05_FR_2Classes_yolo3_SVS/weights_115/46200",
+      "SVS_JPC_lam0.03": "res50_LDMIC0.03_FR_2Classes_yolo3_SVS/weights_111/44600",
+      "SVS_JPC_lam0.01": "res50_LDMIC0.01_FR_2Classes_yolo3_SVS/weights_107/42700"
+    },
+    "lists": {
+      "val": "data/svs_val_local.txt",
+      "test": "data/svs_test_local.txt",
+      "bn_recalibration": "data/svs_bn_local.txt"
+    }
+  },
+  "SynWoodScape_val": {
+    "n_tuples": 50,
+    "list_file": "data/svs_val_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.5743825585658819,
+        "AP_per_class": {
+          "0": 0.7066920766966331,
+          "1": 0.4420730404351306
+        },
+        "mIoU_all": 0.6305546328639705,
+        "mIoU_no_void": 0.5946445000172744,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9537458284842355,
+          0.7902718258814357,
+          0.30061244641807316,
+          0.4593497231846421,
+          0.3905610937605755,
+          0.20736096811622623,
+          0.7829317749074753,
+          0.9815693043815775,
+          0.8351701086244796,
+          0.6039732548809842
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "JOINT_BASE_FT": {
+        "mAP": 0.5622048408872343,
+        "AP_per_class": {
+          "0": 0.7180303763953974,
+          "1": 0.40637930537907135
+        },
+        "mIoU_all": 0.6308225910675888,
+        "mIoU_no_void": 0.5949389847772503,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9537750476806365,
+          0.7845760690250957,
+          0.30583935107848115,
+          0.44928180068117873,
+          0.39471839214769805,
+          0.20867592445414215,
+          0.7963262733855622,
+          0.9828001120086902,
+          0.8531248242110593,
+          0.5791081160033443
+        ],
+        "lambda": 0.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/BASE_FT/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "BASE_FT",
+          "source_name": "SVS_Baseline_no_compression",
+          "lambda_": 0.0,
+          "fusion": "none",
+          "codec_geo": false,
+          "nocodec": true,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        }
+      },
+      "JOINT_SWEEP_L0.03__S": {
+        "mAP": 0.5618504451040431,
+        "AP_per_class": {
+          "0": 0.689265667247374,
+          "1": 0.43443522296071224
+        },
+        "mIoU_all": 0.6005315990797186,
+        "mIoU_no_void": 0.5621969873920447,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.945543104268784,
+          0.7442407202316941,
+          0.26956882419166883,
+          0.4101034177847834,
+          0.35669655805859035,
+          0.17629393368266263,
+          0.7709504437869823,
+          0.9792659374594999,
+          0.8288364902102469,
+          0.5238165611222739
+        ],
+        "BPP": 0.2739955821633339,
+        "PSNR": 27.420049464381773,
+        "MS_SSIM": 0.9435405242443085,
+        "BPP_per_camera": {
+          "FV": 0.30625008821487426,
+          "MVL": 0.24949594527482988,
+          "MVR": 0.25302715092897415,
+          "RV": 0.28720913738012316
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.03/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.03",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.6__S": {
+        "mAP": 0.4760281605211625,
+        "AP_per_class": {
+          "0": 0.5809742148022893,
+          "1": 0.3710821062400357
+        },
+        "mIoU_all": 0.5749603819626563,
+        "mIoU_no_void": 0.5347795407695446,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9365879527006612,
+          0.7117485232936929,
+          0.25025552241296595,
+          0.38698199070487993,
+          0.30074988333360153,
+          0.15692308253228063,
+          0.7482036392108247,
+          0.9753055863135512,
+          0.8058549036880333,
+          0.47699273543607207
+        ],
+        "BPP": 0.8956310474872589,
+        "PSNR": 28.77599762277337,
+        "MS_SSIM": 0.9627945446968078,
+        "BPP_per_camera": {
+          "FV": 0.9937052690982818,
+          "MVL": 0.8253058588504791,
+          "MVR": 0.8292708706855774,
+          "RV": 0.9342421877384186
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.6/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.6",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_QUICK_SIDED_L0.6__S": {
+        "mAP": 0.5601782417498287,
+        "AP_per_class": {
+          "0": 0.6826530483397782,
+          "1": 0.437703435159879
+        },
+        "mIoU_all": 0.6063938004076276,
+        "mIoU_no_void": 0.5685470232362717,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9470147949498298,
+          0.7535234164702843,
+          0.2746029929183193,
+          0.41863917493468494,
+          0.366084943322821,
+          0.17918060929441146,
+          0.7745659031005598,
+          0.9800130061130641,
+          0.8332202632132695,
+          0.5370928997590312
+        ],
+        "BPP": 1.1600023710727692,
+        "PSNR": 31.06787885138359,
+        "MS_SSIM": 0.9816674506664276,
+        "BPP_per_camera": {
+          "FV": 1.3012879490852356,
+          "MVL": 1.058943943977356,
+          "MVR": 1.058390530347824,
+          "RV": 1.221387048959732
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/QUICK_SIDED_L0.6/models/weights_15",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "QUICK_SIDED_L0.6",
+          "source_name": "JOINT_SWEEP_L0.03",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 15,
+          "side": true,
+          "detach_codec": true,
+          "init": "SWEEP_L0.03"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      }
+    },
+    "codecs": {}
+  },
+  "profile": {
+    "SVS_Baseline_no_compression": {
+      "size_MB_all_checkpoints": 216.53130722045898,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.0,
+      "Params_M_comp": 0.0,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 56.646343,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.663322012173012,
+        6.678545079194009
+      ],
+      "sender_pipeline_ms": [
+        13.056506460998207,
+        13.182072719791904
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_BASE_FT": {
+      "size_MB_all_checkpoints": 216.53130722045898,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.0,
+      "Params_M_comp": 0.0,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 56.646343,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.663058011326939,
+        6.679540840559639
+      ],
+      "sender_pipeline_ms": [
+        13.02642049267888,
+        13.130724045913666
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.03": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.698405486531556,
+        6.721402311814018
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.174908981658518,
+        14.283438431448303
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.266443490749225,
+        1.3515966566046698
+      ],
+      "sender_with_bitstream_ms": [
+        15.34176548011601,
+        15.469573356676847
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.6": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.6748695098795,
+        6.697088771034032
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.14853148162365,
+        14.269485452678055
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2684465036727488,
+        1.3591462018666784
+      ],
+      "sender_with_bitstream_ms": [
+        15.318326011765748,
+        15.427650313358754
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_QUICK_SIDED_L0.6": {
+      "size_MB_all_checkpoints": 332.1003589630127,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.690072477795184,
+        6.714721719617955
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.171619026456028,
+        14.285731318523176
+      ],
+      "GMACs_bitstream_encoder_4cams": 23.301881856,
+      "Params_M_bitstream_encoder": 9.655648,
+      "bitstream_encoder_ms": [
+        2.9823479999322444,
+        3.0060010263696313
+      ],
+      "sender_with_bitstream_ms": [
+        17.13897899026051,
+        17.24884065333754
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    }
+  },
+  "SynWoodScape_test": {
+    "n_tuples": 50,
+    "list_file": "data/svs_test_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.7694088677562243,
+        "AP_per_class": {
+          "0": 0.9150112094277573,
+          "1": 0.6238065260846912
+        },
+        "mIoU_all": 0.6537876238854136,
+        "mIoU_no_void": 0.6199607685374652,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9582293220169484,
+          0.8017711398974279,
+          0.32062130520459026,
+          0.5021345303215465,
+          0.45093261662745243,
+          0.24450222576556885,
+          0.7653508910233366,
+          0.9824701015770089,
+          0.8575929194069616,
+          0.6542711870132941
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "JOINT_BASE_FT": {
+        "mAP": 0.74692062928491,
+        "AP_per_class": {
+          "0": 0.8987673656035396,
+          "1": 0.5950738929662802
+        },
+        "mIoU_all": 0.6538703919072977,
+        "mIoU_no_void": 0.6200521093733735,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9582349347126149,
+          0.7974623628135784,
+          0.32452947724821335,
+          0.49478527255412647,
+          0.4559763553282787,
+          0.24488051690540494,
+          0.7759536465951611,
+          0.9832850268554709,
+          0.8671488535247915,
+          0.6364474725353367
+        ],
+        "lambda": 0.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/BASE_FT/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "BASE_FT",
+          "source_name": "SVS_Baseline_no_compression",
+          "lambda_": 0.0,
+          "fusion": "none",
+          "codec_geo": false,
+          "nocodec": true,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        }
+      },
+      "JOINT_SWEEP_L0.03__S": {
+        "mAP": 0.7644343719495432,
+        "AP_per_class": {
+          "0": 0.8933575925481156,
+          "1": 0.6355111513509708
+        },
+        "mIoU_all": 0.6173138234596471,
+        "mIoU_no_void": 0.5805414455300429,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9482652248260852,
+          0.7550288747078572,
+          0.2919657150283247,
+          0.44126229719806925,
+          0.3877697922014151,
+          0.19872060223985089,
+          0.7476810806289729,
+          0.979195409005516,
+          0.8355522313187617,
+          0.5876970074416195
+        ],
+        "BPP": 0.26449977785348894,
+        "PSNR": 27.87799459236051,
+        "MS_SSIM": 0.9461325371265411,
+        "BPP_per_camera": {
+          "FV": 0.29669593840837477,
+          "MVL": 0.23575813114643096,
+          "MVR": 0.247830393910408,
+          "RV": 0.27771464437246324
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.03/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.03",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.6__S": {
+        "mAP": 0.6797334159068544,
+        "AP_per_class": {
+          "0": 0.7879755305283254,
+          "1": 0.5714913012853836
+        },
+        "mIoU_all": 0.5877038076397445,
+        "mIoU_no_void": 0.5488360366024201,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9375137469756654,
+          0.7193166856782747,
+          0.2594673789182378,
+          0.4063690069329167,
+          0.3313670876416498,
+          0.16833060431569974,
+          0.7310916672391575,
+          0.9741778659536745,
+          0.804858097984326,
+          0.5445459347578434
+        ],
+        "BPP": 0.8720331692695618,
+        "PSNR": 29.196970081886775,
+        "MS_SSIM": 0.9643479287624359,
+        "BPP_per_camera": {
+          "FV": 0.9738955914974212,
+          "MVL": 0.7862892460823059,
+          "MVR": 0.8152178275585175,
+          "RV": 0.9127300095558166
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.6/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.6",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40,
+          "side": null,
+          "detach_codec": null,
+          "init": null
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_QUICK_SIDED_L0.6__S": {
+        "mAP": 0.7710021078926702,
+        "AP_per_class": {
+          "0": 0.897880532937235,
+          "1": 0.6441236828481054
+        },
+        "mIoU_all": 0.6232519245436573,
+        "mIoU_no_void": 0.5869296914732263,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9501520221775368,
+          0.7648114401565668,
+          0.2959154036287765,
+          0.4513286746478478,
+          0.39758768241334386,
+          0.20373974187152324,
+          0.7512779612906467,
+          0.9799055978131317,
+          0.84039330090275,
+          0.5974074205344498
+        ],
+        "BPP": 1.1321789491176606,
+        "PSNR": 31.3136220589714,
+        "MS_SSIM": 0.9821814465522766,
+        "BPP_per_camera": {
+          "FV": 1.2845175576210022,
+          "MVL": 1.0124759435653687,
+          "MVR": 1.0430257046222686,
+          "RV": 1.1886965656280517
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/QUICK_SIDED_L0.6/models/weights_15",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "QUICK_SIDED_L0.6",
+          "source_name": "JOINT_SWEEP_L0.03",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 15,
+          "side": true,
+          "detach_codec": true,
+          "init": "SWEEP_L0.03"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      }
+    },
+    "codecs": {}
+  }
+}

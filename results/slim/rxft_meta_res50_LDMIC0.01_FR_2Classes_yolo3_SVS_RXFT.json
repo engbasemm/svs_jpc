@@ -1,0 +1,109 @@
+{
+  "sender_checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+  "lambda_": 0.01,
+  "epochs": 15,
+  "lr": 5e-05,
+  "train_fusion": true,
+  "augmentation": true,
+  "seed": 0,
+  "train_file": "data/svs_bn_local.txt",
+  "n_train_tuples": 399,
+  "receiver_bn_init": "receiver copy, statistics from x_hat of 250 training tuples (seed 0)",
+  "trainable_params_M": 407.940809,
+  "perception_input": "float",
+  "log": [
+    {
+      "detection_loss": 14.291778448530307,
+      "semantic_loss": 0.008005354125146056,
+      "total": 8.672941620188547,
+      "epoch": 1
+    },
+    {
+      "detection_loss": 10.00804987407866,
+      "semantic_loss": 0.0039062103061682373,
+      "total": 6.448222681992036,
+      "epoch": 2
+    },
+    {
+      "detection_loss": 8.324773779190274,
+      "semantic_loss": 0.003298967986841474,
+      "total": 5.564042644691946,
+      "epoch": 3
+    },
+    {
+      "detection_loss": 7.219923692538326,
+      "semantic_loss": 0.003042540809269154,
+      "total": 4.985385226725337,
+      "epoch": 4
+    },
+    {
+      "detection_loss": 6.3720244892258995,
+      "semantic_loss": 0.002723053708102993,
+      "total": 4.547150761561286,
+      "epoch": 5
+    },
+    {
+      "detection_loss": 5.535085137177231,
+      "semantic_loss": 0.002417979580624482,
+      "total": 4.127390792495326,
+      "epoch": 6
+    },
+    {
+      "detection_loss": 5.211878776400908,
+      "semantic_loss": 0.0023821359701608692,
+      "total": 3.9541939948136946,
+      "epoch": 7
+    },
+    {
+      "detection_loss": 4.767514206039577,
+      "semantic_loss": 0.002087147456370901,
+      "total": 3.7328016967104194,
+      "epoch": 8
+    },
+    {
+      "detection_loss": 4.533734959319122,
+      "semantic_loss": 0.00200417361798157,
+      "total": 3.6131683614917267,
+      "epoch": 9
+    },
+    {
+      "detection_loss": 4.299428785653939,
+      "semantic_loss": 0.0018676842252413433,
+      "total": 3.4972066260818253,
+      "epoch": 10
+    },
+    {
+      "detection_loss": 3.99589773788488,
+      "semantic_loss": 0.0017714261345478956,
+      "total": 3.354261973149197,
+      "epoch": 11
+    },
+    {
+      "detection_loss": 3.876645840797807,
+      "semantic_loss": 0.00168796307900407,
+      "total": 3.2965736607262364,
+      "epoch": 12
+    },
+    {
+      "detection_loss": 3.7501013422370852,
+      "semantic_loss": 0.0016665273501519067,
+      "total": 3.2378133559286746,
+      "epoch": 13
+    },
+    {
+      "detection_loss": 3.6960476680955194,
+      "semantic_loss": 0.0016181166579930537,
+      "total": 3.212665599689149,
+      "epoch": 14
+    },
+    {
+      "detection_loss": 3.7135372202199206,
+      "semantic_loss": 0.0016259169195811346,
+      "total": 3.2201435144682575,
+      "epoch": 15
+    }
+  ],
+  "minutes": 12.589248629411061,
+  "date": "2026-11-05T22:04:50",
+  "device": "NVIDIA GeForce RTX 4070 Ti SUPER"
+}

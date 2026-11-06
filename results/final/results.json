@@ -1,0 +1,822 @@
+{
+  "meta": {
+    "date": "2026-11-06T00:26:01",
+    "host": "basem",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "torch": "2.4.1+cu121",
+    "cuda": "12.1",
+    "device": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "git_commit": "6f4fb7701e631db6dfcab61deaaa63f1b5098396",
+    "script": "/media/basem/Collection/Work/Academic/PHDWork/PHD_Topics/MTL/ValeoMTL/SynWoodScapePrj/omnidet/eval/evaluate_mic_mtl_v2.py",
+    "flags": {
+      "SPLITS": [
+        "val",
+        "test"
+      ],
+      "BN_RECALIB_N_tuples": 250,
+      "BN_RECALIB_SCOPE": "no_stats",
+      "BN_RECALIB_SEED": 0,
+      "PERCEPTION_INPUT": "float",
+      "RX_BN": "trained",
+      "RX_FT": false,
+      "CODEC_FT": true,
+      "RX_FT_SUFFIX": "_RXFT",
+      "SX_SLIM": true,
+      "E2E": true,
+      "CODECS": "hevc",
+      "SKIP_CODECS": false,
+      "VOID_INDEX": 0
+    },
+    "input_hw": [
+      288,
+      544
+    ],
+    "cameras": [
+      "FV",
+      "MVL",
+      "MVR",
+      "RV"
+    ],
+    "bpp_definition": "bits / (input_height x input_width) of one camera image, averaged over the four cameras",
+    "detection_conf_thres": 0.5,
+    "detection_nms_thres": 0.2,
+    "loader_settings": {
+      "dataset": "synwoodscape_raw",
+      "crop": false,
+      "input_height": 288,
+      "input_width": 544,
+      "dataset_dir": "SynWoodscape2021/",
+      "train_file": "data/train.txt",
+      "val_file": "svs_val_local.txt"
+    },
+    "models": {
+      "SVS_Baseline_no_compression": "res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/weights_99/39700",
+      "SVS_JPC_lam0.08": "res50_LDMIC0.08_FR_2Classes_yolo3_SVS/weights_117/46900",
+      "SVS_JPC_lam0.05": "res50_LDMIC0.05_FR_2Classes_yolo3_SVS/weights_115/46200",
+      "SVS_JPC_lam0.03": "res50_LDMIC0.03_FR_2Classes_yolo3_SVS/weights_111/44600",
+      "SVS_JPC_lam0.01": "res50_LDMIC0.01_FR_2Classes_yolo3_SVS/weights_107/42700"
+    },
+    "lists": {
+      "val": "data/svs_val_local.txt",
+      "test": "data/svs_test_local.txt",
+      "bn_recalibration": "data/svs_bn_local.txt"
+    }
+  },
+  "SynWoodScape_val": {
+    "n_tuples": 50,
+    "list_file": "data/svs_val_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.5743825585658819,
+        "AP_per_class": {
+          "0": 0.7066920766966331,
+          "1": 0.4420730404351306
+        },
+        "mIoU_all": 0.6305546328639705,
+        "mIoU_no_void": 0.5946445000172744,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9537458284842355,
+          0.7902718258814357,
+          0.30061244641807316,
+          0.4593497231846421,
+          0.3905610937605755,
+          0.20736096811622623,
+          0.7829317749074753,
+          0.9815693043815775,
+          0.8351701086244796,
+          0.6039732548809842
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "SVS_JPC_lam0.01__S": {
+        "mAP": 0.606947104314827,
+        "AP_per_class": {
+          "0": 0.7354477956448164,
+          "1": 0.47844641298483764
+        },
+        "mIoU_all": 0.6125122893578749,
+        "mIoU_no_void": 0.5752936799559009,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.947479773975642,
+          0.7614419846549765,
+          0.28639008539257915,
+          0.43856503144654085,
+          0.3630080963501227,
+          0.19526791625941925,
+          0.7737375524284207,
+          0.9796147921579866,
+          0.8347663012117715,
+          0.5448513597012906
+        ],
+        "BPP": 0.12471517086029053,
+        "PSNR": 25.980406677348814,
+        "MS_SSIM": 0.9138499176502228,
+        "BPP_per_camera": {
+          "FV": 0.13828358247876169,
+          "MVL": 0.11403747215867042,
+          "MVR": 0.1166326379776001,
+          "RV": 0.12990699008107184
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats",
+          "sender_slim": "sender slim fusion and heads from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_SXSLIM/models/weights_15",
+          "e2e": "task-aware codec and receiver (slim fusion) from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_E2E/models/weights_15"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.01__R": {
+        "mAP": 0.3486158756379775,
+        "AP_per_class": {
+          "0": 0.472930931809497,
+          "1": 0.22430081946645805
+        },
+        "mIoU_all": 0.5172284793934235,
+        "mIoU_no_void": 0.47196332978259925,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9246148258908419,
+          0.6430165768028852,
+          0.22835904862116746,
+          0.29533509872932023,
+          0.22899482188857953,
+          0.11048881395923182,
+          0.6949148775392274,
+          0.9680206281711304,
+          0.7449240877754305,
+          0.33361601455642015
+        ],
+        "BPP": 0.12471517086029053,
+        "PSNR": 25.980406677348814,
+        "MS_SSIM": 0.9138499176502228,
+        "BPP_per_camera": {
+          "FV": 0.13828358247876169,
+          "MVL": 0.11403747215867042,
+          "MVR": 0.1166326379776001,
+          "RV": 0.12990699008107184
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats",
+          "sender_slim": "sender slim fusion and heads from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_SXSLIM/models/weights_15",
+          "e2e": "task-aware codec and receiver (slim fusion) from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_E2E/models/weights_15"
+        },
+        "perception_path": "receiver (encoder features of x_hat)"
+      }
+    },
+    "codecs": {
+      "HM HEVC QP31": {
+        "mAP": 0.4353262758403467,
+        "AP_per_class": {
+          "0": 0.6054743482912815,
+          "1": 0.2651782033894119
+        },
+        "mIoU_all": 0.5771181360494629,
+        "mIoU_no_void": 0.5395463316593488,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9152643755604898,
+          0.7842943028722291,
+          0.19314994973203015,
+          0.42460296804162295,
+          0.3503764347718764,
+          0.19691378452109154,
+          0.7517270756198697,
+          0.9364976716622527,
+          0.6978604536349834,
+          0.5204943440781828
+        ],
+        "BPP": 0.4282046568627451,
+        "PSNR": 32.21862705596027,
+        "MS_SSIM": 0.9702971497178078
+      },
+      "HM HEVC QP33": {
+        "mAP": 0.38303081346546053,
+        "AP_per_class": {
+          "0": 0.5439686990647661,
+          "1": 0.222092927866155
+        },
+        "mIoU_all": 0.5466371582150689,
+        "mIoU_no_void": 0.5094753579103145,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8810933609578566,
+          0.7756084683379175,
+          0.1474190576916516,
+          0.39635779888944445,
+          0.32225198099608493,
+          0.18824395559089438,
+          0.7289093388140563,
+          0.8959946914509339,
+          0.6398980281512495,
+          0.490594901270598
+        ],
+        "BPP": 0.32512280433006535,
+        "PSNR": 31.140468009534402,
+        "MS_SSIM": 0.961250367462635
+      },
+      "HM HEVC QP36": {
+        "mAP": 0.29211989002877653,
+        "AP_per_class": {
+          "0": 0.4326036307226199,
+          "1": 0.15163614933493316
+        },
+        "mIoU_all": 0.4924339274698742,
+        "mIoU_no_void": 0.45701210778222606,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8112303046587076,
+          0.7441757596467168,
+          0.0811836192292476,
+          0.3321266182049871,
+          0.2755382125357515,
+          0.1645565142447348,
+          0.6727671184580066,
+          0.8181940622480376,
+          0.5813166560351415,
+          0.44325040943741084
+        ],
+        "BPP": 0.21610268586601303,
+        "PSNR": 29.72475066675803,
+        "MS_SSIM": 0.946487331688404
+      },
+      "HM HEVC QP36 (adapted)": {
+        "mAP": 0.431779608147722,
+        "AP_per_class": {
+          "0": 0.5977122810269593,
+          "1": 0.26584693526848463
+        },
+        "mIoU_all": 0.5507859275706652,
+        "mIoU_no_void": 0.5083326588634831,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9328653459353058,
+          0.6741002737195445,
+          0.25127457040425266,
+          0.3280518151115062,
+          0.2653819393631306,
+          0.1480292026385174,
+          0.7441947166595654,
+          0.9735926566911658,
+          0.7906699801945226,
+          0.3996987749891431
+        ],
+        "BPP": 0.21610268586601303,
+        "PSNR": 29.72475066675803,
+        "MS_SSIM": 0.946487331688404,
+        "receiver": "baseline fine-tuned on HEVC QP36 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP36/models/weights_15)"
+      },
+      "HM HEVC QP39": {
+        "mAP": 0.22390571140947446,
+        "AP_per_class": {
+          "0": 0.3474896952856772,
+          "1": 0.10032172753327173
+        },
+        "mIoU_all": 0.4254854445558087,
+        "mIoU_no_void": 0.391825836747648,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7284219148292556,
+          0.6895805747178844,
+          0.04363910315514876,
+          0.24883609080415545,
+          0.22237902666086748,
+          0.13764054907246479,
+          0.548300070264165,
+          0.7217710594773312,
+          0.5318806045611267,
+          0.3824054520156878
+        ],
+        "BPP": 0.1428829656862745,
+        "PSNR": 28.394111887789162,
+        "MS_SSIM": 0.9293829077482223
+      },
+      "HM HEVC QP39 (adapted)": {
+        "mAP": 0.3421981506887509,
+        "AP_per_class": {
+          "0": 0.4901245531257648,
+          "1": 0.19427174825173704
+        },
+        "mIoU_all": 0.5320396167873079,
+        "mIoU_no_void": 0.4882069953036497,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9265332101402315,
+          0.6512920722048019,
+          0.23589699726292063,
+          0.3081864370944937,
+          0.2378722805909619,
+          0.13330309541472715,
+          0.721558954321028,
+          0.9695963331119486,
+          0.7713935884177869,
+          0.36476319931417844
+        ],
+        "BPP": 0.1428829656862745,
+        "PSNR": 28.394111887789162,
+        "MS_SSIM": 0.9293829077482223,
+        "receiver": "baseline fine-tuned on HEVC QP39 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP39/models/weights_15)"
+      },
+      "HM HEVC QP42": {
+        "mAP": 0.135593533533556,
+        "AP_per_class": {
+          "0": 0.22758893814831213,
+          "1": 0.043598128918799876
+        },
+        "mIoU_all": 0.3309996833445163,
+        "mIoU_no_void": 0.2965352713567557,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6411793912343612,
+          0.5742497148255994,
+          0.00687894992707827,
+          0.1413241159635988,
+          0.14639222719904854,
+          0.09975594388304448,
+          0.35035302726183043,
+          0.6086784177821689,
+          0.43932143741492785,
+          0.3018636079535049
+        ],
+        "BPP": 0.09318014705882352,
+        "PSNR": 27.036788428768755,
+        "MS_SSIM": 0.9072831863164902
+      },
+      "HM HEVC QP42 (adapted)": {
+        "mAP": 0.2725648591552091,
+        "AP_per_class": {
+          "0": 0.4326227252053064,
+          "1": 0.11250699310511184
+        },
+        "mIoU_all": 0.5037577741603313,
+        "mIoU_no_void": 0.4577517611395818,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.917811891347076,
+          0.6117912315027931,
+          0.2124495336559172,
+          0.2701534877035849,
+          0.1988291537844956,
+          0.11313393768293363,
+          0.692321642157512,
+          0.9646708741502541,
+          0.7407426517656885,
+          0.3156733378530575
+        ],
+        "BPP": 0.09318014705882352,
+        "PSNR": 27.036788428768755,
+        "MS_SSIM": 0.9072831863164902,
+        "receiver": "baseline fine-tuned on HEVC QP42 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP42/models/weights_15)"
+      },
+      "HM HEVC QP45": {
+        "mAP": 0.07518700376933515,
+        "AP_per_class": {
+          "0": 0.13296460381552191,
+          "1": 0.017409403723148403
+        },
+        "mIoU_all": 0.23234818328201873,
+        "mIoU_no_void": 0.19679661677879443,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5523122818110373,
+          0.3992268220739257,
+          0.0012280745279976183,
+          0.05197021637362232,
+          0.08139629886841783,
+          0.05461232111892376,
+          0.16094865910058223,
+          0.47360581844280003,
+          0.34952865010521167,
+          0.1986526903976687
+        ],
+        "BPP": 0.0598092830882353,
+        "PSNR": 25.702346529492637,
+        "MS_SSIM": 0.8776751098036766
+      }
+    }
+  },
+  "profile": {
+    "SVS_Baseline_no_compression": {
+      "size_MB_all_checkpoints": 216.53130722045898,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.0,
+      "Params_M_comp": 0.0,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 56.646343,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.663398467935622,
+        6.687929283361882
+      ],
+      "sender_pipeline_ms": [
+        13.061369478236884,
+        13.180034962715581
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "SVS_JPC_lam0.01": {
+      "size_MB_all_checkpoints": 1641.9302463531494,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.446826,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.670215982012451,
+        6.706999288871884
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "Params_M_fusion_receiver_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.109832001850009,
+        14.217876270413399
+      ],
+      "fusion_F4_sender_ms": [
+        1.1709335376508534,
+        1.3319771067472173
+      ],
+      "receiver_pipeline_ms": [
+        43.71213499689475,
+        43.88679968251381
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    }
+  },
+  "SynWoodScape_test": {
+    "n_tuples": 50,
+    "list_file": "data/svs_test_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.7694088677562243,
+        "AP_per_class": {
+          "0": 0.9150112094277573,
+          "1": 0.6238065260846912
+        },
+        "mIoU_all": 0.6537876238854136,
+        "mIoU_no_void": 0.6199607685374652,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9582293220169484,
+          0.8017711398974279,
+          0.32062130520459026,
+          0.5021345303215465,
+          0.45093261662745243,
+          0.24450222576556885,
+          0.7653508910233366,
+          0.9824701015770089,
+          0.8575929194069616,
+          0.6542711870132941
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "SVS_JPC_lam0.01__S": {
+        "mAP": 0.7773739143150944,
+        "AP_per_class": {
+          "0": 0.9123510666898125,
+          "1": 0.6423967619403764
+        },
+        "mIoU_all": 0.6300466409431498,
+        "mIoU_no_void": 0.5945553606260559,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9494681637969953,
+          0.7670006153195255,
+          0.30394171073164705,
+          0.47326892109500807,
+          0.40414866081635303,
+          0.22228417521145397,
+          0.7516583209369566,
+          0.9798775655365494,
+          0.8462503448005891,
+          0.60256793118642
+        ],
+        "BPP": 0.11490483865141869,
+        "PSNR": 26.715921340453136,
+        "MS_SSIM": 0.9211055552959442,
+        "BPP_per_camera": {
+          "FV": 0.12768024802207947,
+          "MVL": 0.1026940631866455,
+          "MVR": 0.10890551850199699,
+          "RV": 0.12033952966332435
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats",
+          "sender_slim": "sender slim fusion and heads from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_SXSLIM/models/weights_15",
+          "e2e": "task-aware codec and receiver (slim fusion) from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_E2E/models/weights_15"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.01__R": {
+        "mAP": 0.4244279879592872,
+        "AP_per_class": {
+          "0": 0.5869098118968222,
+          "1": 0.2619461640217522
+        },
+        "mIoU_all": 0.5261540893156298,
+        "mIoU_no_void": 0.4820643398289083,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.922961834696123,
+          0.6495486805202831,
+          0.22968655048713074,
+          0.29576716474135833,
+          0.243486796026477,
+          0.12406766609241644,
+          0.6802463150130327,
+          0.9672946820463423,
+          0.7457355137713412,
+          0.40274568976179287
+        ],
+        "BPP": 0.11490483865141869,
+        "PSNR": 26.715921340453136,
+        "MS_SSIM": 0.9211055552959442,
+        "BPP_per_camera": {
+          "FV": 0.12768024802207947,
+          "MVL": 0.1026940631866455,
+          "MVR": 0.10890551850199699,
+          "RV": 0.12033952966332435
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats",
+          "sender_slim": "sender slim fusion and heads from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_SXSLIM/models/weights_15",
+          "e2e": "task-aware codec and receiver (slim fusion) from /media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS_E2E/models/weights_15"
+        },
+        "perception_path": "receiver (encoder features of x_hat)"
+      }
+    },
+    "codecs": {
+      "HM HEVC QP31": {
+        "mAP": 0.5841987061783676,
+        "AP_per_class": {
+          "0": 0.7953879473584944,
+          "1": 0.3730094649982406
+        },
+        "mIoU_all": 0.5891928188506191,
+        "mIoU_no_void": 0.5545940289526914,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9005819279319698,
+          0.7903802199694125,
+          0.24296821758255374,
+          0.4579134396851956,
+          0.39472081295091954,
+          0.22073210876292054,
+          0.722395348885172,
+          0.9153530983970264,
+          0.675457486324285,
+          0.5714255280167363
+        ],
+        "BPP": 0.41045241013071904,
+        "PSNR": 32.44884441516485,
+        "MS_SSIM": 0.970729418694973
+      },
+      "HM HEVC QP33": {
+        "mAP": 0.502237361106713,
+        "AP_per_class": {
+          "0": 0.7067170484297605,
+          "1": 0.2977576737836656
+        },
+        "mIoU_all": 0.5541279257026976,
+        "mIoU_no_void": 0.5201947571992385,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8595264422338323,
+          0.7752633091813775,
+          0.19400172445977298,
+          0.4251342432360956,
+          0.3587042173611549,
+          0.20513692387509289,
+          0.6913445813232961,
+          0.8701069764014765,
+          0.6256927017984107,
+          0.5363681371564684
+        ],
+        "BPP": 0.31126608455882354,
+        "PSNR": 31.368441311791635,
+        "MS_SSIM": 0.9616570925712585
+      },
+      "HM HEVC QP36": {
+        "mAP": 0.37075949253445173,
+        "AP_per_class": {
+          "0": 0.5271150706411164,
+          "1": 0.2144039144277871
+        },
+        "mIoU_all": 0.4937498725911437,
+        "mIoU_no_void": 0.4616232081169705,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7828898528587018,
+          0.7411675662546868,
+          0.12258790737564322,
+          0.3496041303759975,
+          0.306525498412065,
+          0.18177105994967935,
+          0.6233776094196638,
+          0.784325481642271,
+          0.5783885545556625,
+          0.4668610650670657
+        ],
+        "BPP": 0.20676598243464053,
+        "PSNR": 29.950402419887872,
+        "MS_SSIM": 0.9467916914820671
+      },
+      "HM HEVC QP36 (adapted)": {
+        "mAP": 0.5236058298900625,
+        "AP_per_class": {
+          "0": 0.7165219932105451,
+          "1": 0.33068966656958
+        },
+        "mIoU_all": 0.5636109189410841,
+        "mIoU_no_void": 0.5225330301872864,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.933311917725264,
+          0.6837586877283804,
+          0.2579042808828765,
+          0.35192609280442905,
+          0.30200730382826513,
+          0.16664303551990048,
+          0.718724625128566,
+          0.9712431704817014,
+          0.7914802889217648,
+          0.45910978638969335
+        ],
+        "BPP": 0.20676598243464053,
+        "PSNR": 29.950402419887872,
+        "MS_SSIM": 0.9467916914820671,
+        "receiver": "baseline fine-tuned on HEVC QP36 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP36/models/weights_15)"
+      },
+      "HM HEVC QP39": {
+        "mAP": 0.26951757548822397,
+        "AP_per_class": {
+          "0": 0.40614697996405796,
+          "1": 0.13288817101239
+        },
+        "mIoU_all": 0.4138005466060948,
+        "mIoU_no_void": 0.3826435072919565,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6942139004333386,
+          0.6776848617856079,
+          0.05792819188558375,
+          0.2546083745885997,
+          0.23364773516407206,
+          0.14280027273458773,
+          0.4981309826977719,
+          0.6729287900396107,
+          0.5023798331011337,
+          0.4036825236306411
+        ],
+        "BPP": 0.13704427083333334,
+        "PSNR": 28.633312609431414,
+        "MS_SSIM": 0.930020222067833
+      },
+      "HM HEVC QP39 (adapted)": {
+        "mAP": 0.43808412380559797,
+        "AP_per_class": {
+          "0": 0.634986047874585,
+          "1": 0.24118219973661092
+        },
+        "mIoU_all": 0.5409139128874004,
+        "mIoU_no_void": 0.4982039650516644,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9253034434090248,
+          0.6551590624856969,
+          0.23588428984994808,
+          0.32451823484272607,
+          0.2682179443390719,
+          0.14532026404555512,
+          0.6957386481228528,
+          0.9664101531479006,
+          0.7657646491653959,
+          0.42682243946583265
+        ],
+        "BPP": 0.13704427083333334,
+        "PSNR": 28.633312609431414,
+        "MS_SSIM": 0.930020222067833,
+        "receiver": "baseline fine-tuned on HEVC QP39 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP39/models/weights_15)"
+      },
+      "HM HEVC QP42": {
+        "mAP": 0.14835635527366597,
+        "AP_per_class": {
+          "0": 0.231430802961954,
+          "1": 0.06528190758537794
+        },
+        "mIoU_all": 0.31375209421070316,
+        "mIoU_no_void": 0.28086659659249774,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6097215727745522,
+          0.5667825588282629,
+          0.015921266067801695,
+          0.12909702544209234,
+          0.15331053407788578,
+          0.10328260692542404,
+          0.2951851437242683,
+          0.5480307770597239,
+          0.4022140993557825,
+          0.3139753578512381
+        ],
+        "BPP": 0.08952282475490198,
+        "PSNR": 27.271532721377312,
+        "MS_SSIM": 0.9081311145424843
+      },
+      "HM HEVC QP42 (adapted)": {
+        "mAP": 0.33158227648274324,
+        "AP_per_class": {
+          "0": 0.5105333437005757,
+          "1": 0.1526312092649108
+        },
+        "mIoU_all": 0.5080582120330551,
+        "mIoU_no_void": 0.46289023822160963,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.914569976336065,
+          0.6229972481162432,
+          0.19706529887086016,
+          0.2727883954668148,
+          0.21832318307181114,
+          0.11863902300482818,
+          0.6645251812238083,
+          0.9604919386926575,
+          0.727934173147481,
+          0.3832477023999829
+        ],
+        "BPP": 0.08952282475490198,
+        "PSNR": 27.271532721377312,
+        "MS_SSIM": 0.9081311145424843,
+        "receiver": "baseline fine-tuned on HEVC QP42 frames (/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS_RXFT_HEVC_QP42/models/weights_15)"
+      },
+      "HM HEVC QP45": {
+        "mAP": 0.08581002503933423,
+        "AP_per_class": {
+          "0": 0.1436898010033367,
+          "1": 0.027930249075331766
+        },
+        "mIoU_all": 0.2225666942388381,
+        "mIoU_no_void": 0.18867760243995718,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5275685204287662,
+          0.41249017471724275,
+          0.004610284695526213,
+          0.04391151212948672,
+          0.08684947001979502,
+          0.061429428001923046,
+          0.14508430571701078,
+          0.407083597532994,
+          0.32946494642216,
+          0.2071747027234761
+        ],
+        "BPP": 0.057526552287581696,
+        "PSNR": 25.9299981316273,
+        "MS_SSIM": 0.8787770164012909
+      }
+    }
+  }
+}

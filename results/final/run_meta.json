@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-06T00:26:01",
+  "host": "basem",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+  "python": "3.8.10",
+  "torch": "2.4.1+cu121",
+  "cuda": "12.1",
+  "device": "NVIDIA GeForce RTX 4070 Ti SUPER",
+  "git_commit": "6f4fb7701e631db6dfcab61deaaa63f1b5098396",
+  "script": "/media/basem/Collection/Work/Academic/PHDWork/PHD_Topics/MTL/ValeoMTL/SynWoodScapePrj/omnidet/eval/evaluate_mic_mtl_v2.py",
+  "flags": {
+    "SPLITS": [
+      "val",
+      "test"
+    ],
+    "BN_RECALIB_N_tuples": 250,
+    "BN_RECALIB_SCOPE": "no_stats",
+    "BN_RECALIB_SEED": 0,
+    "PERCEPTION_INPUT": "float",
+    "RX_BN": "trained",
+    "RX_FT": false,
+    "CODEC_FT": true,
+    "RX_FT_SUFFIX": "_RXFT",
+    "SX_SLIM": true,
+    "E2E": true,
+    "CODECS": "hevc",
+    "SKIP_CODECS": false,
+    "VOID_INDEX": 0
+  },
+  "input_hw": [
+    288,
+    544
+  ],
+  "cameras": [
+    "FV",
+    "MVL",
+    "MVR",
+    "RV"
+  ],
+  "bpp_definition": "bits / (input_height x input_width) of one camera image, averaged over the four cameras",
+  "detection_conf_thres": 0.5,
+  "detection_nms_thres": 0.2,
+  "loader_settings": {
+    "dataset": "synwoodscape_raw",
+    "crop": false,
+    "input_height": 288,
+    "input_width": 544,
+    "dataset_dir": "SynWoodscape2021/",
+    "train_file": "data/train.txt",
+    "val_file": "svs_val_local.txt"
+  },
+  "models": {
+    "SVS_Baseline_no_compression": "res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/weights_99/39700",
+    "SVS_JPC_lam0.08": "res50_LDMIC0.08_FR_2Classes_yolo3_SVS/weights_117/46900",
+    "SVS_JPC_lam0.05": "res50_LDMIC0.05_FR_2Classes_yolo3_SVS/weights_115/46200",
+    "SVS_JPC_lam0.03": "res50_LDMIC0.03_FR_2Classes_yolo3_SVS/weights_111/44600",
+    "SVS_JPC_lam0.01": "res50_LDMIC0.01_FR_2Classes_yolo3_SVS/weights_107/42700"
+  },
+  "lists": {
+    "val": "data/svs_val_local.txt",
+    "test": "data/svs_test_local.txt",
+    "bn_recalibration": "data/svs_bn_local.txt"
+  }
+}

@@ -1,0 +1,3416 @@
+{
+  "meta": {
+    "date": "2026-11-06T10:20:50",
+    "host": "basem",
+    "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "torch": "2.4.1+cu121",
+    "cuda": "12.1",
+    "device": "NVIDIA GeForce RTX 4070 Ti SUPER",
+    "git_commit": "6f4fb7701e631db6dfcab61deaaa63f1b5098396",
+    "script": "/media/basem/Collection/Work/Academic/PHDWork/PHD_Topics/MTL/ValeoMTL/SynWoodScapePrj/omnidet/eval/evaluate_mic_mtl_v2.py",
+    "flags": {
+      "SPLITS": [
+        "val",
+        "test"
+      ],
+      "BN_RECALIB_N_tuples": 250,
+      "BN_RECALIB_SCOPE": "no_stats",
+      "BN_RECALIB_SEED": 0,
+      "PERCEPTION_INPUT": "float",
+      "RX_BN": "trained",
+      "RX_FT": false,
+      "CODEC_FT": false,
+      "RX_FT_SUFFIX": "_RXFT",
+      "SX_SLIM": false,
+      "SX_SUFFIX": "_SXSLIM",
+      "E2E": false,
+      "JOINT_RUNS": [
+        "BASE_FT",
+        "SWEEP_L0.01",
+        "SWEEP_L0.03",
+        "SWEEP_L0.08",
+        "SWEEP_L0.25",
+        "SWEEP_L0.6",
+        "SWEEP_L2.0",
+        "ABL_NOFUSION",
+        "ABL_GEO",
+        "ABL_NOCGEO",
+        "ABL_HEAVY"
+      ],
+      "SENDER_ONLY": true,
+      "CODEC_PERC_JOINT": "BASE_FT",
+      "HEVC_QPS": [
+        24,
+        27,
+        30,
+        33,
+        36,
+        39,
+        42,
+        45
+      ],
+      "E2E_SUFFIX": "_E2E",
+      "CODECS": "all",
+      "SKIP_CODECS": false,
+      "VOID_INDEX": 0
+    },
+    "input_hw": [
+      288,
+      544
+    ],
+    "cameras": [
+      "FV",
+      "MVL",
+      "MVR",
+      "RV"
+    ],
+    "bpp_definition": "bits / (input_height x input_width) of one camera image, averaged over the four cameras",
+    "detection_conf_thres": 0.5,
+    "detection_nms_thres": 0.2,
+    "loader_settings": {
+      "dataset": "synwoodscape_raw",
+      "crop": false,
+      "input_height": 288,
+      "input_width": 544,
+      "dataset_dir": "SynWoodscape2021/",
+      "train_file": "data/train.txt",
+      "val_file": "svs_val_local.txt"
+    },
+    "models": {
+      "SVS_Baseline_no_compression": "res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/weights_99/39700",
+      "SVS_JPC_lam0.08": "res50_LDMIC0.08_FR_2Classes_yolo3_SVS/weights_117/46900",
+      "SVS_JPC_lam0.05": "res50_LDMIC0.05_FR_2Classes_yolo3_SVS/weights_115/46200",
+      "SVS_JPC_lam0.03": "res50_LDMIC0.03_FR_2Classes_yolo3_SVS/weights_111/44600",
+      "SVS_JPC_lam0.01": "res50_LDMIC0.01_FR_2Classes_yolo3_SVS/weights_107/42700"
+    },
+    "lists": {
+      "val": "data/svs_val_local.txt",
+      "test": "data/svs_test_local.txt",
+      "bn_recalibration": "data/svs_bn_local.txt"
+    }
+  },
+  "SynWoodScape_val": {
+    "n_tuples": 50,
+    "list_file": "data/svs_val_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.5743825585658819,
+        "AP_per_class": {
+          "0": 0.7066920766966331,
+          "1": 0.4420730404351306
+        },
+        "mIoU_all": 0.6305546328639705,
+        "mIoU_no_void": 0.5946445000172744,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9537458284842355,
+          0.7902718258814357,
+          0.30061244641807316,
+          0.4593497231846421,
+          0.3905610937605755,
+          0.20736096811622623,
+          0.7829317749074753,
+          0.9815693043815775,
+          0.8351701086244796,
+          0.6039732548809842
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "SVS_JPC_lam0.08__S": {
+        "mAP": 0.5596880311657962,
+        "AP_per_class": {
+          "0": 0.6782198305360158,
+          "1": 0.44115623179557667
+        },
+        "mIoU_all": 0.6024195391000705,
+        "mIoU_no_void": 0.5645207392290763,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.943508737939019,
+          0.7567259509816898,
+          0.25513513513513514,
+          0.42087554204077227,
+          0.35512274606859023,
+          0.17343274796428923,
+          0.7692271656085335,
+          0.9785922396084046,
+          0.8200317186673993,
+          0.5515434069868727
+        ],
+        "BPP": 0.2941720083355904,
+        "PSNR": 27.58342607238943,
+        "MS_SSIM": 0.9444369447231292,
+        "BPP_per_camera": {
+          "FV": 0.3312907403707504,
+          "MVL": 0.2657251876592636,
+          "MVR": 0.26971576929092406,
+          "RV": 0.30995633035898207
+        },
+        "lambda": 0.08,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.08_FR_2Classes_yolo3_SVS/models/weights_117/46900",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.05__S": {
+        "mAP": 0.5782708949837326,
+        "AP_per_class": {
+          "0": 0.6977595971965401,
+          "1": 0.45878219277092513
+        },
+        "mIoU_all": 0.6088593330863893,
+        "mIoU_no_void": 0.5711209100881065,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9485051400709348,
+          0.7742494956072243,
+          0.24815213757753593,
+          0.42160392993835627,
+          0.36911158592090626,
+          0.19116185018127554,
+          0.7679355151555001,
+          0.9799727062096116,
+          0.8295202680055244,
+          0.5583807021970247
+        ],
+        "BPP": 0.2531063586473465,
+        "PSNR": 27.060649189183735,
+        "MS_SSIM": 0.9375568044185638,
+        "BPP_per_camera": {
+          "FV": 0.283718436062336,
+          "MVL": 0.2288384661078453,
+          "MVR": 0.23344555020332336,
+          "RV": 0.26642297834157946
+        },
+        "lambda": 0.05,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.05_FR_2Classes_yolo3_SVS/models/weights_115/46200",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.03__S": {
+        "mAP": 0.56241550996726,
+        "AP_per_class": {
+          "0": 0.6805222473067164,
+          "1": 0.44430877262780355
+        },
+        "mIoU_all": 0.6130981287247754,
+        "mIoU_no_void": 0.5757888945325242,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.948881236455037,
+          0.777986677721361,
+          0.2678461182281216,
+          0.4292712192402322,
+          0.3695447076244447,
+          0.19199129156390338,
+          0.7640322052974545,
+          0.9798517559856462,
+          0.827948514744212,
+          0.573627560387343
+        ],
+        "BPP": 0.1674257016181946,
+        "PSNR": 26.155920663290182,
+        "MS_SSIM": 0.9238725244998932,
+        "BPP_per_camera": {
+          "FV": 0.18679722636938095,
+          "MVL": 0.15147342875599862,
+          "MVR": 0.15506291896104812,
+          "RV": 0.17636923730373383
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.03_FR_2Classes_yolo3_SVS/models/weights_111/44600",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.01__S": {
+        "mAP": 0.5910328532147779,
+        "AP_per_class": {
+          "0": 0.7145913748225317,
+          "1": 0.4674743316070241
+        },
+        "mIoU_all": 0.6241723461461496,
+        "mIoU_no_void": 0.5879776712966376,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9499244197917581,
+          0.7902686468663038,
+          0.283107906810463,
+          0.4557008058288357,
+          0.38508572971952765,
+          0.2011513916063142,
+          0.771619365609349,
+          0.9804137730659664,
+          0.8360780105911908,
+          0.5883734115717878
+        ],
+        "BPP": 0.12570072710514069,
+        "PSNR": 25.68851831880327,
+        "MS_SSIM": 0.9124008405208588,
+        "BPP_per_camera": {
+          "FV": 0.13909366741776466,
+          "MVL": 0.11495058596134186,
+          "MVR": 0.11775248438119888,
+          "RV": 0.13100616961717607
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_BASE_FT": {
+        "mAP": 0.5622048408872343,
+        "AP_per_class": {
+          "0": 0.7180303763953974,
+          "1": 0.40637930537907135
+        },
+        "mIoU_all": 0.6308225910675888,
+        "mIoU_no_void": 0.5949389847772503,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9537750476806365,
+          0.7845760690250957,
+          0.30583935107848115,
+          0.44928180068117873,
+          0.39471839214769805,
+          0.20867592445414215,
+          0.7963262733855622,
+          0.9828001120086902,
+          0.8531248242110593,
+          0.5791081160033443
+        ],
+        "lambda": 0.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/BASE_FT/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "BASE_FT",
+          "source_name": "SVS_Baseline_no_compression",
+          "lambda_": 0.0,
+          "fusion": "none",
+          "codec_geo": false,
+          "nocodec": true,
+          "epochs": 40
+        }
+      },
+      "JOINT_SWEEP_L0.01__S": {
+        "mAP": 0.5769343855652987,
+        "AP_per_class": {
+          "0": 0.7065617885888157,
+          "1": 0.4473069825417818
+        },
+        "mIoU_all": 0.61259058523445,
+        "mIoU_no_void": 0.5753441987211728,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.947808063853945,
+          0.7612024144178491,
+          0.28572359843546286,
+          0.43623618928496977,
+          0.36583161866616193,
+          0.19040454045794386,
+          0.7774277253842402,
+          0.9799728073802539,
+          0.8356977412414411,
+          0.545601153222233
+        ],
+        "BPP": 0.15918338924646377,
+        "PSNR": 26.612945097541793,
+        "MS_SSIM": 0.9275954651832581,
+        "BPP_per_camera": {
+          "FV": 0.1776111462712288,
+          "MVL": 0.14496154040098191,
+          "MVR": 0.14855325236916542,
+          "RV": 0.16560761362314225
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.01/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.01",
+          "source_name": "SVS_JPC_lam0.01",
+          "lambda_": 0.01,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.03__S": {
+        "mAP": 0.5618504451040431,
+        "AP_per_class": {
+          "0": 0.689265667247374,
+          "1": 0.43443522296071224
+        },
+        "mIoU_all": 0.6005315990797186,
+        "mIoU_no_void": 0.5621969873920447,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.945543104268784,
+          0.7442407202316941,
+          0.26956882419166883,
+          0.4101034177847834,
+          0.35669655805859035,
+          0.17629393368266263,
+          0.7709504437869823,
+          0.9792659374594999,
+          0.8288364902102469,
+          0.5238165611222739
+        ],
+        "BPP": 0.27399554699659345,
+        "PSNR": 27.420057863817277,
+        "MS_SSIM": 0.9435404980182648,
+        "BPP_per_camera": {
+          "FV": 0.30625029385089875,
+          "MVL": 0.24949552744627,
+          "MVR": 0.2530267548561096,
+          "RV": 0.2872096148133278
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.03/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.03",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.08__S": {
+        "mAP": 0.5259908285081539,
+        "AP_per_class": {
+          "0": 0.6380187845762778,
+          "1": 0.41396287244003005
+        },
+        "mIoU_all": 0.5897685301971068,
+        "mIoU_no_void": 0.5507711788388803,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9407446924211467,
+          0.7309008220234202,
+          0.26605655997785305,
+          0.40499817995048704,
+          0.32903668132705954,
+          0.1698565037405558,
+          0.7596351495486365,
+          0.9773286791656705,
+          0.8172278176303086,
+          0.5019002161859305
+        ],
+        "BPP": 0.46524473011493683,
+        "PSNR": 28.418885505226964,
+        "MS_SSIM": 0.9575358736515045,
+        "BPP_per_camera": {
+          "FV": 0.5211391657590866,
+          "MVL": 0.4245813202857971,
+          "MVR": 0.42778436303138734,
+          "RV": 0.4874740827083588
+        },
+        "lambda": 0.08,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.08/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.08",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.08,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.25__S": {
+        "mAP": 0.49518308636866026,
+        "AP_per_class": {
+          "0": 0.6073926903279934,
+          "1": 0.3829734824093271
+        },
+        "mIoU_all": 0.5814480063328592,
+        "mIoU_no_void": 0.5417899352567405,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9383706460179273,
+          0.7196943542345032,
+          0.25875443262411346,
+          0.39298035014107735,
+          0.3136046758240396,
+          0.16291041161335712,
+          0.7538753404118601,
+          0.9762242981815948,
+          0.8109953856069918,
+          0.4870701686731259
+        ],
+        "BPP": 0.7033652698993683,
+        "PSNR": 28.647594526875753,
+        "MS_SSIM": 0.9610804080963135,
+        "BPP_per_camera": {
+          "FV": 0.7827957355976105,
+          "MVL": 0.6446487903594971,
+          "MVR": 0.6495527690649032,
+          "RV": 0.7364637804031372
+        },
+        "lambda": 0.25,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.25/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.25",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.25,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.6__S": {
+        "mAP": 0.4760281605211625,
+        "AP_per_class": {
+          "0": 0.5809742148022893,
+          "1": 0.3710821062400357
+        },
+        "mIoU_all": 0.5749603819626563,
+        "mIoU_no_void": 0.5347795407695446,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9365879527006612,
+          0.7117485232936929,
+          0.25025552241296595,
+          0.38698199070487993,
+          0.30074988333360153,
+          0.15692308253228063,
+          0.7482036392108247,
+          0.9753055863135512,
+          0.8058549036880333,
+          0.47699273543607207
+        ],
+        "BPP": 0.8956315517425537,
+        "PSNR": 28.776008759127443,
+        "MS_SSIM": 0.9627946960926056,
+        "BPP_per_camera": {
+          "FV": 0.9937057614326477,
+          "MVL": 0.8253062462806702,
+          "MVR": 0.8292716193199158,
+          "RV": 0.9342425787448883
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.6/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.6",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L2.0__S": {
+        "mAP": 0.4388143038203761,
+        "AP_per_class": {
+          "0": 0.5307879317443528,
+          "1": 0.3468406758963994
+        },
+        "mIoU_all": 0.5664003820720339,
+        "mIoU_no_void": 0.5255142918829322,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9343751937739496,
+          0.7008219204921726,
+          0.2391761179270064,
+          0.37642291155297103,
+          0.2830526970237158,
+          0.1511582773481144,
+          0.7427054784758166,
+          0.9742249781090982,
+          0.7991437320237802,
+          0.4629225139937144
+        ],
+        "BPP": 1.0842206823825835,
+        "PSNR": 28.903501892665787,
+        "MS_SSIM": 0.9642562544345856,
+        "BPP_per_camera": {
+          "FV": 1.1986679077148437,
+          "MVL": 1.0039072740077972,
+          "MVR": 1.0079752504825592,
+          "RV": 1.1263323318958283
+        },
+        "lambda": 2.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L2.0/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L2.0",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 2.0,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_NOFUSION__S": {
+        "mAP": 0.4798065957031015,
+        "AP_per_class": {
+          "0": 0.6116632240809028,
+          "1": 0.34794996732530026
+        },
+        "mIoU_all": 0.6078779988569873,
+        "mIoU_no_void": 0.5701271088408815,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9476360090019404,
+          0.7551057203703356,
+          0.27782671523021496,
+          0.42037857446296184,
+          0.36699349541645127,
+          0.18190007171886205,
+          0.7748464278154216,
+          0.9802616419696507,
+          0.8345995076491164,
+          0.5392318249349188
+        ],
+        "BPP": 0.26800882250070573,
+        "PSNR": 27.240944344798805,
+        "MS_SSIM": 0.9407318639755249,
+        "BPP_per_camera": {
+          "FV": 0.29914832681417464,
+          "MVL": 0.2438826233148575,
+          "MVR": 0.24867769598960876,
+          "RV": 0.2803266462683678
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_NOFUSION/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_NOFUSION",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "none",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_GEO__S": {
+        "mAP": 0.5536134268806844,
+        "AP_per_class": {
+          "0": 0.6770795529320923,
+          "1": 0.4301473008292764
+        },
+        "mIoU_all": 0.6029320379282085,
+        "mIoU_no_void": 0.564787705901735,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9462310261664691,
+          0.7487922029884405,
+          0.27264368958576646,
+          0.41304032674268243,
+          0.3600023209012426,
+          0.17634452533758543,
+          0.7722688816472547,
+          0.9795960890747806,
+          0.829537845309881,
+          0.530863471527982
+        ],
+        "BPP": 0.2743586832284927,
+        "PSNR": 27.427496280130935,
+        "MS_SSIM": 0.9436280512809754,
+        "BPP_per_camera": {
+          "FV": 0.30608873188495633,
+          "MVL": 0.24996502369642257,
+          "MVR": 0.2532909432053566,
+          "RV": 0.28809003382921217
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_GEO/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_GEO",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "geo",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_NOCGEO__S": {
+        "mAP": 0.5510113086106627,
+        "AP_per_class": {
+          "0": 0.6784823512041245,
+          "1": 0.42354026601720085
+        },
+        "mIoU_all": 0.5999879754600119,
+        "mIoU_no_void": 0.5616208820641814,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9452918160224871,
+          0.7439722524877137,
+          0.2691018750215931,
+          0.41002634368135665,
+          0.3554056527623157,
+          0.1762437928365085,
+          0.7688516945932011,
+          0.9790705734590375,
+          0.828245814095789,
+          0.5236699396401167
+        ],
+        "BPP": 0.2733870616555214,
+        "PSNR": 27.42263128919565,
+        "MS_SSIM": 0.9434867131710053,
+        "BPP_per_camera": {
+          "FV": 0.3054091262817383,
+          "MVL": 0.2489643195271492,
+          "MVR": 0.25239803254604337,
+          "RV": 0.286776762008667
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_NOCGEO/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_NOCGEO",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": false,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_HEAVY__S": {
+        "mAP": 0.5726828859721234,
+        "AP_per_class": {
+          "0": 0.7137729857604649,
+          "1": 0.4315927861837818
+        },
+        "mIoU_all": 0.6058878856899048,
+        "mIoU_no_void": 0.5679128609923126,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9476631079682352,
+          0.753775645520556,
+          0.2794835458982837,
+          0.41703933102585045,
+          0.3612128706019138,
+          0.17911698921289576,
+          0.773065977990887,
+          0.9802012368518556,
+          0.8324931087610443,
+          0.534827043067527
+        ],
+        "BPP": 0.2728635278344154,
+        "PSNR": 27.448385420847657,
+        "MS_SSIM": 0.9438818550109863,
+        "BPP_per_camera": {
+          "FV": 0.3047552996873856,
+          "MVL": 0.2484411922097206,
+          "MVR": 0.25193110555410386,
+          "RV": 0.2863265186548233
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_HEAVY/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_HEAVY",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "heavy",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      }
+    },
+    "codecs": {
+      "HM HEVC QP24": {
+        "mAP": 0.5237215139109772,
+        "AP_per_class": {
+          "0": 0.6772457815003785,
+          "1": 0.37019724632157597
+        },
+        "mIoU_all": 0.6211043874776716,
+        "mIoU_no_void": 0.5846285092897785,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.94938729116871,
+          0.7946257014834912,
+          0.2779149922266874,
+          0.45259066417517824,
+          0.3860656625853289,
+          0.2107694624898456,
+          0.778562649165898,
+          0.9785178423298658,
+          0.8191173428361466,
+          0.5634922663155646
+        ],
+        "BPP": 1.0013388480392158,
+        "PSNR": 35.738123536479165,
+        "MS_SSIM": 0.9888352704048157
+      },
+      "HM HEVC QP24 (BASE_FT)": {
+        "mAP": 0.5267667958398468,
+        "AP_per_class": {
+          "0": 0.6731576906079451,
+          "1": 0.38037590107174857
+        },
+        "mIoU_all": 0.6216521236612383,
+        "mIoU_no_void": 0.5850843143857016,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9507624071410693,
+          0.7853780764434203,
+          0.2921870682134671,
+          0.44104694300317093,
+          0.3849469531661489,
+          0.20859783993967443,
+          0.793766536249502,
+          0.9813144931701138,
+          0.8409018046160653,
+          0.5376191146697518
+        ],
+        "BPP": 1.0013388480392158,
+        "PSNR": 35.738123536479165,
+        "MS_SSIM": 0.9888352704048157,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP27": {
+        "mAP": 0.4929890134988364,
+        "AP_per_class": {
+          "0": 0.6592655879501521,
+          "1": 0.3267124390475207
+        },
+        "mIoU_all": 0.609249301282442,
+        "mIoU_no_void": 0.5720697560702469,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9438652081921967,
+          0.7932940826193644,
+          0.25116872078198044,
+          0.44125400003262955,
+          0.37583592708734054,
+          0.20696337009657495,
+          0.7726581545711747,
+          0.9717014778886304,
+          0.787572014192819,
+          0.5481800573617086
+        ],
+        "BPP": 0.7055657679738562,
+        "PSNR": 34.196892177307426,
+        "MS_SSIM": 0.9824771106243133
+      },
+      "HM HEVC QP27 (BASE_FT)": {
+        "mAP": 0.5015277571809094,
+        "AP_per_class": {
+          "0": 0.6544276628196226,
+          "1": 0.348627851542196
+        },
+        "mIoU_all": 0.6134065360737624,
+        "mIoU_no_void": 0.5762508094882842,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9478080753430663,
+          0.7835924402883266,
+          0.27515091132860575,
+          0.4299224400718237,
+          0.37175920325793316,
+          0.2038640739266392,
+          0.7893701187971333,
+          0.9794487698032025,
+          0.8304025841014733,
+          0.5227467438194202
+        ],
+        "BPP": 0.7055657679738562,
+        "PSNR": 34.196892177307426,
+        "MS_SSIM": 0.9824771106243133,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP30": {
+        "mAP": 0.4468821700529505,
+        "AP_per_class": {
+          "0": 0.6131258975819052,
+          "1": 0.2806384425239959
+        },
+        "mIoU_all": 0.5869695976255394,
+        "mIoU_no_void": 0.5492016714822658,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9268809329150003,
+          0.7887618461582493,
+          0.2066091850355352,
+          0.4304122328098089,
+          0.35633878047703005,
+          0.2001025118120326,
+          0.7578899435348404,
+          0.949463330682967,
+          0.7181107605279314,
+          0.5351264523019973
+        ],
+        "BPP": 0.48949754901960785,
+        "PSNR": 32.75211877504263,
+        "MS_SSIM": 0.974077833890915
+      },
+      "HM HEVC QP30 (BASE_FT)": {
+        "mAP": 0.4685526312804241,
+        "AP_per_class": {
+          "0": 0.621613361926709,
+          "1": 0.31549190063413923
+        },
+        "mIoU_all": 0.6020402448629569,
+        "mIoU_no_void": 0.564364246940749,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9411242261628283,
+          0.7801997004553635,
+          0.24445871511042847,
+          0.4233144533525865,
+          0.35720275845544464,
+          0.19838460270488778,
+          0.779848728774946,
+          0.9744899647425065,
+          0.810074894294111,
+          0.5113044045764675
+        ],
+        "BPP": 0.48949754901960785,
+        "PSNR": 32.75211877504263,
+        "MS_SSIM": 0.974077833890915,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP33": {
+        "mAP": 0.38303081346546053,
+        "AP_per_class": {
+          "0": 0.5439686990647661,
+          "1": 0.222092927866155
+        },
+        "mIoU_all": 0.5466371582150689,
+        "mIoU_no_void": 0.5094753579103145,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8810933609578566,
+          0.7756084683379175,
+          0.1474190576916516,
+          0.39635779888944445,
+          0.32225198099608493,
+          0.18824395559089438,
+          0.7289093388140563,
+          0.8959946914509339,
+          0.6398980281512495,
+          0.490594901270598
+        ],
+        "BPP": 0.32512280433006535,
+        "PSNR": 31.140468009534402,
+        "MS_SSIM": 0.961250367462635
+      },
+      "HM HEVC QP33 (BASE_FT)": {
+        "mAP": 0.4048284419297152,
+        "AP_per_class": {
+          "0": 0.5490925477184274,
+          "1": 0.26056433614100294
+        },
+        "mIoU_all": 0.5753444827500273,
+        "mIoU_no_void": 0.5368186262927112,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9220771908658729,
+          0.7685041593384032,
+          0.18781360874272032,
+          0.39692326313241344,
+          0.3260648108846477,
+          0.18327734539568505,
+          0.7532800325956048,
+          0.9591911306267705,
+          0.782632781201142,
+          0.473680504717013
+        ],
+        "BPP": 0.32512280433006535,
+        "PSNR": 31.140468009534402,
+        "MS_SSIM": 0.961250367462635,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP36": {
+        "mAP": 0.29211989002877653,
+        "AP_per_class": {
+          "0": 0.4326036307226199,
+          "1": 0.15163614933493316
+        },
+        "mIoU_all": 0.4924339274698742,
+        "mIoU_no_void": 0.45701210778222606,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8112303046587076,
+          0.7441757596467168,
+          0.0811836192292476,
+          0.3321266182049871,
+          0.2755382125357515,
+          0.1645565142447348,
+          0.6727671184580066,
+          0.8181940622480376,
+          0.5813166560351415,
+          0.44325040943741084
+        ],
+        "BPP": 0.21610268586601303,
+        "PSNR": 29.72475066675803,
+        "MS_SSIM": 0.946487331688404
+      },
+      "HM HEVC QP36 (BASE_FT)": {
+        "mAP": 0.3248717095066165,
+        "AP_per_class": {
+          "0": 0.4784601230244636,
+          "1": 0.1712832959887694
+        },
+        "mIoU_all": 0.5340451013256147,
+        "mIoU_no_void": 0.49475575876742006,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8876491843493644,
+          0.7429852696252964,
+          0.11461089530672372,
+          0.35391512490577515,
+          0.28120259704809997,
+          0.16064562069784002,
+          0.710575715317133,
+          0.9300438309879142,
+          0.7232766663858282,
+          0.4355461086321701
+        ],
+        "BPP": 0.21610268586601303,
+        "PSNR": 29.72475066675803,
+        "MS_SSIM": 0.946487331688404,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP39": {
+        "mAP": 0.22390571140947446,
+        "AP_per_class": {
+          "0": 0.3474896952856772,
+          "1": 0.10032172753327173
+        },
+        "mIoU_all": 0.4254854445558087,
+        "mIoU_no_void": 0.391825836747648,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7284219148292556,
+          0.6895805747178844,
+          0.04363910315514876,
+          0.24883609080415545,
+          0.22237902666086748,
+          0.13764054907246479,
+          0.548300070264165,
+          0.7217710594773312,
+          0.5318806045611267,
+          0.3824054520156878
+        ],
+        "BPP": 0.1428829656862745,
+        "PSNR": 28.39411188778916,
+        "MS_SSIM": 0.9293829077482223
+      },
+      "HM HEVC QP39 (BASE_FT)": {
+        "mAP": 0.23386864837130145,
+        "AP_per_class": {
+          "0": 0.3526148781018793,
+          "1": 0.11512241864072362
+        },
+        "mIoU_all": 0.4780920817384657,
+        "mIoU_no_void": 0.43908622002563563,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8291448371539364,
+          0.6990246800049227,
+          0.05869608036241875,
+          0.2878966941074148,
+          0.2309626047943805,
+          0.1353598997163027,
+          0.6285708118206456,
+          0.8781944652729594,
+          0.6527569746169678,
+          0.3803137695347084
+        ],
+        "BPP": 0.1428829656862745,
+        "PSNR": 28.39411188778916,
+        "MS_SSIM": 0.9293829077482223,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP42": {
+        "mAP": 0.135593533533556,
+        "AP_per_class": {
+          "0": 0.22758893814831213,
+          "1": 0.043598128918799876
+        },
+        "mIoU_all": 0.3309996833445163,
+        "mIoU_no_void": 0.2965352713567557,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6411793912343612,
+          0.5742497148255994,
+          0.00687894992707827,
+          0.1413241159635988,
+          0.14639222719904854,
+          0.09975594388304448,
+          0.35035302726183043,
+          0.6086784177821689,
+          0.43932143741492785,
+          0.3018636079535049
+        ],
+        "BPP": 0.09318014705882352,
+        "PSNR": 27.03678842876875,
+        "MS_SSIM": 0.9072831863164902
+      },
+      "HM HEVC QP42 (BASE_FT)": {
+        "mAP": 0.14949755011425236,
+        "AP_per_class": {
+          "0": 0.24520643273148518,
+          "1": 0.053788667497019535
+        },
+        "mIoU_all": 0.39471224730479465,
+        "mIoU_no_void": 0.3554827902710882,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7477773606081526,
+          0.6090571529547212,
+          0.010201632261161785,
+          0.18301510165557,
+          0.16282373467362424,
+          0.10408637602382172,
+          0.47035729078534877,
+          0.7992404872693415,
+          0.5430304633296353,
+          0.3175328734865693
+        ],
+        "BPP": 0.09318014705882352,
+        "PSNR": 27.03678842876875,
+        "MS_SSIM": 0.9072831863164902,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP45": {
+        "mAP": 0.07518700376933515,
+        "AP_per_class": {
+          "0": 0.13296460381552191,
+          "1": 0.017409403723148403
+        },
+        "mIoU_all": 0.23234818328201873,
+        "mIoU_no_void": 0.19679661677879443,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5523122818110373,
+          0.3992268220739257,
+          0.0012280745279976183,
+          0.05197021637362232,
+          0.08139629886841783,
+          0.05461232111892376,
+          0.16094865910058223,
+          0.47360581844280003,
+          0.34952865010521167,
+          0.1986526903976687
+        ],
+        "BPP": 0.0598092830882353,
+        "PSNR": 25.702346529492637,
+        "MS_SSIM": 0.8776751098036766
+      },
+      "HM HEVC QP45 (BASE_FT)": {
+        "mAP": 0.07785167846776431,
+        "AP_per_class": {
+          "0": 0.1377339635001888,
+          "1": 0.017969393435339827
+        },
+        "mIoU_all": 0.2957464877815279,
+        "mIoU_no_void": 0.2567735460569691,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.646502963302557,
+          0.46881891204365994,
+          0.003023078624622115,
+          0.0801324896252526,
+          0.09358422909590348,
+          0.0625739969304977,
+          0.2618148869157843,
+          0.6839304009865816,
+          0.4240819966826257,
+          0.23300192360779434
+        ],
+        "BPP": 0.0598092830882353,
+        "PSNR": 25.702346529492637,
+        "MS_SSIM": 0.8776751098036766,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl10": {
+        "mAP": 0.4440602187220962,
+        "AP_per_class": {
+          "0": 0.5905446600295665,
+          "1": 0.29757577741462593
+        },
+        "mIoU_all": 0.558215971680901,
+        "mIoU_no_void": 0.5191471358606996,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.909835494062713,
+          0.7490440056119602,
+          0.15939912753025354,
+          0.4375451867797721,
+          0.3474347200239691,
+          0.17487726577660137,
+          0.6898984560500842,
+          0.9313804871357867,
+          0.6634014675457967,
+          0.5193435062920732
+        ],
+        "BPP": 1.1983864379084967,
+        "PSNR": 31.714046391289198,
+        "MS_SSIM": 0.9624477675557137
+      },
+      "JPEG2000 cl10 (BASE_FT)": {
+        "mAP": 0.46574635109134455,
+        "AP_per_class": {
+          "0": 0.6133348762322539,
+          "1": 0.3181578259504351
+        },
+        "mIoU_all": 0.5833435303478441,
+        "mIoU_no_void": 0.5446798001422276,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9313171021983926,
+          0.7401084113025763,
+          0.22372626570732207,
+          0.42878371900466294,
+          0.34542093153918346,
+          0.17551557511433255,
+          0.7300360274303774,
+          0.9694542247208737,
+          0.7930045075480605,
+          0.49606853891265923
+        ],
+        "BPP": 1.1983864379084967,
+        "PSNR": 31.714046391289198,
+        "MS_SSIM": 0.9624477675557137,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl15": {
+        "mAP": 0.34774043186465414,
+        "AP_per_class": {
+          "0": 0.466778550547173,
+          "1": 0.2287023131821353
+        },
+        "mIoU_all": 0.495141599956807,
+        "mIoU_no_void": 0.45701854255167895,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8382491166029604,
+          0.706127208968587,
+          0.06499249958331019,
+          0.4004782009197331,
+          0.3070812735596802,
+          0.1538846803981719,
+          0.6120345416183101,
+          0.851183417102815,
+          0.5499041509491673,
+          0.46748090986533547
+        ],
+        "BPP": 0.7982332516339871,
+        "PSNR": 29.903666182979023,
+        "MS_SSIM": 0.9470518410205842
+      },
+      "JPEG2000 cl15 (BASE_FT)": {
+        "mAP": 0.37297373663058386,
+        "AP_per_class": {
+          "0": 0.5018806165188731,
+          "1": 0.24406685674229467
+        },
+        "mIoU_all": 0.5310354924155274,
+        "mIoU_no_void": 0.4905493877504885,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.895410434400877,
+          0.6951508535517205,
+          0.12409195795231177,
+          0.3969276158969265,
+          0.2997735166231656,
+          0.1521935796332002,
+          0.6619665601903209,
+          0.9390466911858902,
+          0.7035558449574033,
+          0.442237869763458
+        ],
+        "BPP": 0.7982332516339871,
+        "PSNR": 29.903666182979023,
+        "MS_SSIM": 0.9470518410205842,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl25": {
+        "mAP": 0.20623663950257948,
+        "AP_per_class": {
+          "0": 0.30099776033475945,
+          "1": 0.11147551867039952
+        },
+        "mIoU_all": 0.4016423667528798,
+        "mIoU_no_void": 0.36671669430681075,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.715973418767501,
+          0.6235299907658473,
+          0.008526694925636439,
+          0.29547515257192675,
+          0.2435485077417907,
+          0.11817748593567233,
+          0.4476042423305016,
+          0.7056387493905586,
+          0.4573287179507863,
+          0.4006207071485768
+        ],
+        "BPP": 0.4792197712418301,
+        "PSNR": 27.980832397315226,
+        "MS_SSIM": 0.9250487494468689
+      },
+      "JPEG2000 cl25 (BASE_FT)": {
+        "mAP": 0.22538100079954695,
+        "AP_per_class": {
+          "0": 0.3189554197744454,
+          "1": 0.1318065818246485
+        },
+        "mIoU_all": 0.441298936792072,
+        "mIoU_no_void": 0.40097123835855786,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.804248222693699,
+          0.6131594866689761,
+          0.022992277313583255,
+          0.3102395989872277,
+          0.23145978441797702,
+          0.11896026486417999,
+          0.5262140332394323,
+          0.8518251249109481,
+          0.5610254310117491,
+          0.37286514381294744
+        ],
+        "BPP": 0.4792197712418301,
+        "PSNR": 27.980832397315226,
+        "MS_SSIM": 0.9250487494468689,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl50": {
+        "mAP": 0.09219517696094551,
+        "AP_per_class": {
+          "0": 0.1531792536335127,
+          "1": 0.03121110028837831
+        },
+        "mIoU_all": 0.2500138242636357,
+        "mIoU_no_void": 0.21624955899310436,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5538922116984176,
+          0.4215158068085607,
+          3.733293511535877e-05,
+          0.10216643408817719,
+          0.12927467175968313,
+          0.047320932877757266,
+          0.17190984414307253,
+          0.4573952459436506,
+          0.3427403466659416,
+          0.27388541571598063
+        ],
+        "BPP": 0.23941661560457514,
+        "PSNR": 25.774114601966815,
+        "MS_SSIM": 0.882619917690754
+      },
+      "JPEG2000 cl50 (BASE_FT)": {
+        "mAP": 0.09984273495354705,
+        "AP_per_class": {
+          "0": 0.15801333429694603,
+          "1": 0.04167213561014806
+        },
+        "mIoU_all": 0.29204833238142636,
+        "mIoU_no_void": 0.2543882143122131,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6309893950043458,
+          0.44909509645962004,
+          0.00292685326381032,
+          0.1324080193875303,
+          0.12659645299921313,
+          0.05488798844953659,
+          0.24372509583688928,
+          0.6215269649927055,
+          0.3777995389983488,
+          0.28052791842226393
+        ],
+        "BPP": 0.23941661560457514,
+        "PSNR": 25.774114601966815,
+        "MS_SSIM": 0.882619917690754,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl75": {
+        "mAP": 0.05040902317133014,
+        "AP_per_class": {
+          "0": 0.08900793653471366,
+          "1": 0.011810109807946625
+        },
+        "mIoU_all": 0.1706231057114444,
+        "mIoU_no_void": 0.13619426996934786,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.4804826273903134,
+          0.2578545364958788,
+          0.0,
+          0.036671295770415994,
+          0.09200535352788071,
+          0.017981943309894874,
+          0.05389661441191219,
+          0.2959737127847893,
+          0.2772380957626525,
+          0.19412687766070635
+        ],
+        "BPP": 0.15985217524509807,
+        "PSNR": 24.636517268689563,
+        "MS_SSIM": 0.8525653359293938
+      },
+      "JPEG2000 cl75 (BASE_FT)": {
+        "mAP": 0.0582902474607096,
+        "AP_per_class": {
+          "0": 0.09819371346058117,
+          "1": 0.018386781460838032
+        },
+        "mIoU_all": 0.21109927563058214,
+        "mIoU_no_void": 0.17390782165269134,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5458223614315996,
+          0.30787841728165066,
+          0.0005582849486377847,
+          0.053456643228073586,
+          0.08692363105544965,
+          0.025125676955582,
+          0.11392279226786554,
+          0.46628544620756446,
+          0.2903288772508273,
+          0.220690625678571
+        ],
+        "BPP": 0.15985217524509807,
+        "PSNR": 24.636517268689563,
+        "MS_SSIM": 0.8525653359293938,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl95": {
+        "mAP": 0.03482297401747088,
+        "AP_per_class": {
+          "0": 0.06183422712675179,
+          "1": 0.007811720908189972
+        },
+        "mIoU_all": 0.13841479977062282,
+        "mIoU_no_void": 0.10378813560710502,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.45005477724228304,
+          0.17810863467129087,
+          0.0,
+          0.02365324984981175,
+          0.06833272968731136,
+          0.005768906381782401,
+          0.02319399919076224,
+          0.22182150838057885,
+          0.2514805528368311,
+          0.16173363946557667
+        ],
+        "BPP": 0.12612234477124182,
+        "PSNR": 24.0136176726598,
+        "MS_SSIM": 0.8309660822153091
+      },
+      "JPEG2000 cl95 (BASE_FT)": {
+        "mAP": 0.04237127438847355,
+        "AP_per_class": {
+          "0": 0.07234870788494567,
+          "1": 0.012393840892001433
+        },
+        "mIoU_all": 0.17382908772534725,
+        "mIoU_no_void": 0.13693779927338237,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.505850683793031,
+          0.224628255869224,
+          0.0015442202922900169,
+          0.03569246911539595,
+          0.06961395235689291,
+          0.012123983098946838,
+          0.057995603427532,
+          0.3853136413445533,
+          0.2582754562774496,
+          0.1872526116781567
+        ],
+        "BPP": 0.12612234477124182,
+        "PSNR": 24.0136176726598,
+        "MS_SSIM": 0.8309660822153091,
+        "perception": "JOINT_BASE_FT"
+      }
+    }
+  },
+  "profile": {
+    "SVS_Baseline_no_compression": {
+      "size_MB_all_checkpoints": 216.53130722045898,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.0,
+      "Params_M_comp": 0.0,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 56.646343,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.6646205086726695,
+        6.6779392276657745
+      ],
+      "sender_pipeline_ms": [
+        13.104701502015814,
+        13.178068687557243
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "SVS_JPC_lam0.08": {
+      "size_MB_all_checkpoints": 1641.9302463531494,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.446826,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.707747495966032,
+        6.72207263414748
+      ],
+      "Params_M_fusion_sender_path": 351.294464,
+      "sender_pipeline_ms": [
+        45.07687597651966,
+        45.16727818117943
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2734975025523454,
+        1.3306040462339297
+      ],
+      "sender_with_bitstream_ms": [
+        46.26167198875919,
+        46.34581852296833
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "SVS_JPC_lam0.05": {
+      "size_MB_all_checkpoints": 1641.9302463531494,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.446826,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.694260984659195,
+        6.707464359351434
+      ],
+      "Params_M_fusion_sender_path": 351.294464,
+      "sender_pipeline_ms": [
+        45.068220992106944,
+        45.17028873960953
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2671209988184273,
+        1.3132820633472875
+      ],
+      "sender_with_bitstream_ms": [
+        46.2606759974733,
+        46.3523742830148
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "SVS_JPC_lam0.03": {
+      "size_MB_all_checkpoints": 1641.9302463531494,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.446826,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.6916715004481375,
+        6.707250967156142
+      ],
+      "Params_M_fusion_sender_path": 351.294464,
+      "sender_pipeline_ms": [
+        45.04108399851248,
+        45.13844431203324
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2687520065810531,
+        1.3274904602440074
+      ],
+      "sender_with_bitstream_ms": [
+        46.241681528044865,
+        46.36262054555118
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "SVS_JPC_lam0.01": {
+      "size_MB_all_checkpoints": 1641.9302463531494,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.446826,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.703642458887771,
+        6.716202691313811
+      ],
+      "Params_M_fusion_sender_path": 351.294464,
+      "sender_pipeline_ms": [
+        45.08941649692133,
+        45.20370159007143
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2713175383396447,
+        1.3256810838356614
+      ],
+      "sender_with_bitstream_ms": [
+        46.28057801164687,
+        46.37895318737719
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_BASE_FT": {
+      "size_MB_all_checkpoints": 216.53130722045898,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.0,
+      "Params_M_comp": 0.0,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 56.646343,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.678384030237794,
+        6.692775883129798
+      ],
+      "sender_pipeline_ms": [
+        13.137145491782576,
+        13.198734947945923
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.01": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.674383505014703,
+        6.68618910422083
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.17948052403517,
+        14.256452850531787
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2663994857575744,
+        1.3219577027484775
+      ],
+      "sender_with_bitstream_ms": [
+        15.334835508838296,
+        15.399736072868109
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.03": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.70034100767225,
+        6.71194095921237
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.23861799412407,
+        14.301735500339419
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2777700030710548,
+        1.3246824266389012
+      ],
+      "sender_with_bitstream_ms": [
+        15.407503000460565,
+        15.472393535310403
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.08": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.683475978206843,
+        6.694535003043711
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.203113998519257,
+        14.258447752217762
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2705255066975951,
+        1.3243007502751425
+      ],
+      "sender_with_bitstream_ms": [
+        15.416758513310924,
+        15.491576818749309
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.25": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.6712624684441835,
+        6.685545164509676
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.197690004948527,
+        14.264869564794935
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2650610005948693,
+        1.3226106617366895
+      ],
+      "sender_with_bitstream_ms": [
+        15.25220851181075,
+        15.32783784205094
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L0.6": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.681733997538686,
+        6.706036534160376
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.081265981076285,
+        14.127425907645375
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2545659847091883,
+        1.2924675247631967
+      ],
+      "sender_with_bitstream_ms": [
+        15.281704545486718,
+        15.334403264569119
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_SWEEP_L2.0": {
+      "size_MB_all_checkpoints": 327.8555507659912,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.966834,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.690183508908376,
+        6.709132876130752
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.144926011795178,
+        14.260670787189156
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2566784862428904,
+        1.3290325267007574
+      ],
+      "sender_with_bitstream_ms": [
+        15.322950494010001,
+        15.460321670980193
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_ABL_NOFUSION": {
+      "size_MB_all_checkpoints": 302.8884696960449,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 0.0,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 77.42462599999999,
+      "GMACs_encoder_4cams": 51.602743296,
+      "encoder_4cams_ms": [
+        6.697693461319432,
+        6.707938632462174
+      ],
+      "sender_pipeline_ms": [
+        13.019954494666308,
+        13.070907385554165
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2523559853434563,
+        1.280161811155267
+      ],
+      "sender_with_bitstream_ms": [
+        14.196526986779645,
+        14.236736230668612
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_ABL_GEO": {
+      "size_MB_all_checkpoints": 308.18911933898926,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 1.388036,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 78.81266199999999,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 0.687320064,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.676486489595845,
+        6.691195606254041
+      ],
+      "Params_M_fusion_sender_path": 1.388036,
+      "sender_pipeline_ms": [
+        14.065621508052573,
+        14.11614878452383
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.252146001206711,
+        1.271018831175752
+      ],
+      "sender_with_bitstream_ms": [
+        15.234259015414864,
+        15.302088417229243
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_ABL_NOCGEO": {
+      "size_MB_all_checkpoints": 326.8062992095947,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 6.542208,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.309219,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 83.69457,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 4.00140288,
+      "GMACs_codec_forward": 338.59049472,
+      "encoder_4cams_ms": [
+        6.685171480057761,
+        6.694710583542474
+      ],
+      "Params_M_fusion_sender_path": 6.542208,
+      "sender_pipeline_ms": [
+        14.091905002715066,
+        14.142004397581331
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2551194813568145,
+        1.2750580033753067
+      ],
+      "sender_with_bitstream_ms": [
+        15.26750047923997,
+        15.334738543606363
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    },
+    "JOINT_ABL_HEAVY": {
+      "size_MB_all_checkpoints": 1642.979497909546,
+      "Params_M_enc": 25.557032,
+      "Params_M_fusion": 351.294464,
+      "Params_M_proj": 0.1968,
+      "Params_M_comp": 20.581483,
+      "Params_M_det": 21.632319,
+      "Params_M_sem": 9.456992,
+      "Params_M_total": 428.71909,
+      "GMACs_encoder_4cams": 51.602743296,
+      "GMACs_fusion_F4": 214.984065024,
+      "GMACs_codec_forward": 340.738154496,
+      "encoder_4cams_ms": [
+        6.685593514703214,
+        6.702430281438865
+      ],
+      "Params_M_fusion_sender_path": 351.294464,
+      "sender_pipeline_ms": [
+        44.66540552675724,
+        44.7164752491517
+      ],
+      "GMACs_bitstream_encoder_4cams": 12.021497856,
+      "Params_M_bitstream_encoder": 8.545184,
+      "bitstream_encoder_ms": [
+        1.2537385046016425,
+        1.2770613946486264
+      ],
+      "sender_with_bitstream_ms": [
+        45.859781006583944,
+        45.92788823065348
+      ],
+      "latency_note": "(median, P95) ms, one four-camera tuple, forward passes, no arithmetic coding"
+    }
+  },
+  "SynWoodScape_test": {
+    "n_tuples": 50,
+    "list_file": "data/svs_test_local.txt",
+    "models": {
+      "SVS_Baseline_no_compression": {
+        "mAP": 0.7694088677562243,
+        "AP_per_class": {
+          "0": 0.9150112094277573,
+          "1": 0.6238065260846912
+        },
+        "mIoU_all": 0.6537876238854136,
+        "mIoU_no_void": 0.6199607685374652,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9582293220169484,
+          0.8017711398974279,
+          0.32062130520459026,
+          0.5021345303215465,
+          0.45093261662745243,
+          0.24450222576556885,
+          0.7653508910233366,
+          0.9824701015770089,
+          0.8575929194069616,
+          0.6542711870132941
+        ],
+        "lambda": null,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_no_mic_no_compression_FR_2Classes_yolo3_SVS/models/weights_99/39700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats"
+        }
+      },
+      "SVS_JPC_lam0.08__S": {
+        "mAP": 0.8055477434538071,
+        "AP_per_class": {
+          "0": 0.9302037813986741,
+          "1": 0.6808917055089401
+        },
+        "mIoU_all": 0.6244659616257784,
+        "mIoU_no_void": 0.5885062035916785,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9481037839326767,
+          0.7665657260294475,
+          0.2895051166994867,
+          0.4637226443870956,
+          0.39803302656632517,
+          0.19564233199640368,
+          0.7528990428887509,
+          0.9791874743780462,
+          0.8355354268478371,
+          0.6154650425317134
+        ],
+        "BPP": 0.2720388886332512,
+        "PSNR": 28.307316300482317,
+        "MS_SSIM": 0.9475944221019745,
+        "BPP_per_camera": {
+          "FV": 0.30714002817869185,
+          "MVL": 0.24182577550411224,
+          "MVR": 0.2519506430625916,
+          "RV": 0.28723910748958587
+        },
+        "lambda": 0.08,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.08_FR_2Classes_yolo3_SVS/models/weights_117/46900",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.05__S": {
+        "mAP": 0.8052486038952796,
+        "AP_per_class": {
+          "0": 0.9330136839873688,
+          "1": 0.6774835238031904
+        },
+        "mIoU_all": 0.6339596564024796,
+        "mIoU_no_void": 0.5984704043905129,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9533629245101805,
+          0.7851691622109332,
+          0.28441141020490157,
+          0.46752448805763563,
+          0.42844119227448635,
+          0.2188898535625398,
+          0.7504203900716655,
+          0.9806455108558365,
+          0.8488169335166378,
+          0.62191469875998
+        ],
+        "BPP": 0.23330529451370238,
+        "PSNR": 27.778793071211318,
+        "MS_SSIM": 0.9413943254947662,
+        "BPP_per_camera": {
+          "FV": 0.2625305068492889,
+          "MVL": 0.20715393215417863,
+          "MVR": 0.21684881895780564,
+          "RV": 0.24668792098760606
+        },
+        "lambda": 0.05,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.05_FR_2Classes_yolo3_SVS/models/weights_115/46200",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.03__S": {
+        "mAP": 0.8075040998419915,
+        "AP_per_class": {
+          "0": 0.9362553781784109,
+          "1": 0.678752821505572
+        },
+        "mIoU_all": 0.6362270287500095,
+        "mIoU_no_void": 0.601049403311566,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9528256576960005,
+          0.7885708089803766,
+          0.30528748221811114,
+          0.4693832227345006,
+          0.4132082082227003,
+          0.22077219506731266,
+          0.75051848493245,
+          0.9805620562205559,
+          0.84827000807668,
+          0.6328721633514066
+        ],
+        "BPP": 0.15286585167050362,
+        "PSNR": 26.876288711462553,
+        "MS_SSIM": 0.9287883114814758,
+        "BPP_per_camera": {
+          "FV": 0.17118246406316756,
+          "MVL": 0.13627143561840058,
+          "MVR": 0.14309328079223632,
+          "RV": 0.16091622158885002
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.03_FR_2Classes_yolo3_SVS/models/weights_111/44600",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "SVS_JPC_lam0.01__S": {
+        "mAP": 0.7934287439437495,
+        "AP_per_class": {
+          "0": 0.934179397996825,
+          "1": 0.6526780898906741
+        },
+        "mIoU_all": 0.6453558801682984,
+        "mIoU_no_void": 0.6110502590721585,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9541064700335572,
+          0.7980705222148627,
+          0.3079160094637224,
+          0.49880181609425395,
+          0.435763178623549,
+          0.23201507956646247,
+          0.7526369070372129,
+          0.9809621358317451,
+          0.8530228238595641,
+          0.6402638589580548
+        ],
+        "BPP": 0.11509516462683678,
+        "PSNR": 26.347768810501076,
+        "MS_SSIM": 0.9194983232021332,
+        "BPP_per_camera": {
+          "FV": 0.1282659700512886,
+          "MVL": 0.10278771504759789,
+          "MVR": 0.10887725606560707,
+          "RV": 0.12044971659779549
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/res50_LDMIC0.01_FR_2Classes_yolo3_SVS/models/weights_107/42700",
+        "bn_mode": {
+          "encoder": "running_stats",
+          "det": "running_stats",
+          "sem": "running_stats",
+          "fusion": "running_stats",
+          "comp": "running_stats"
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_BASE_FT": {
+        "mAP": 0.74692062928491,
+        "AP_per_class": {
+          "0": 0.8987673656035396,
+          "1": 0.5950738929662802
+        },
+        "mIoU_all": 0.6538703919072977,
+        "mIoU_no_void": 0.6200521093733735,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9582349347126149,
+          0.7974623628135784,
+          0.32452947724821335,
+          0.49478527255412647,
+          0.4559763553282787,
+          0.24488051690540494,
+          0.7759536465951611,
+          0.9832850268554709,
+          0.8671488535247915,
+          0.6364474725353367
+        ],
+        "lambda": 0.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/BASE_FT/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "BASE_FT",
+          "source_name": "SVS_Baseline_no_compression",
+          "lambda_": 0.0,
+          "fusion": "none",
+          "codec_geo": false,
+          "nocodec": true,
+          "epochs": 40
+        }
+      },
+      "JOINT_SWEEP_L0.01__S": {
+        "mAP": 0.7853196348923216,
+        "AP_per_class": {
+          "0": 0.9122769574466867,
+          "1": 0.6583623123379565
+        },
+        "mIoU_all": 0.6289072356904629,
+        "mIoU_no_void": 0.5932225511153165,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9500693968667809,
+          0.7674214868306002,
+          0.3015994691318475,
+          0.4676136174185589,
+          0.4070280800442641,
+          0.2149017868605642,
+          0.7536955406410001,
+          0.9802209159563697,
+          0.8449905516455429,
+          0.6015315115091014
+        ],
+        "BPP": 0.15295857906341553,
+        "PSNR": 27.13963522227185,
+        "MS_SSIM": 0.9316294145584106,
+        "BPP_per_camera": {
+          "FV": 0.1718538311123848,
+          "MVL": 0.1355129300057888,
+          "MVR": 0.14410997286438942,
+          "RV": 0.16035758540034295
+        },
+        "lambda": 0.01,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.01/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.01",
+          "source_name": "SVS_JPC_lam0.01",
+          "lambda_": 0.01,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.03__S": {
+        "mAP": 0.7644343719495432,
+        "AP_per_class": {
+          "0": 0.8933575925481156,
+          "1": 0.6355111513509708
+        },
+        "mIoU_all": 0.6173138234596471,
+        "mIoU_no_void": 0.5805414455300429,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9482652248260852,
+          0.7550288747078572,
+          0.2919657150283247,
+          0.44126229719806925,
+          0.3877697922014151,
+          0.19872060223985089,
+          0.7476810806289729,
+          0.979195409005516,
+          0.8355522313187617,
+          0.5876970074416195
+        ],
+        "BPP": 0.2644995865225792,
+        "PSNR": 27.87800212012482,
+        "MS_SSIM": 0.9461325967311859,
+        "BPP_per_camera": {
+          "FV": 0.296696609556675,
+          "MVL": 0.23575668841600417,
+          "MVR": 0.2478303325176239,
+          "RV": 0.27771470427513123
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.03/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.03",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.08__S": {
+        "mAP": 0.7488361148057412,
+        "AP_per_class": {
+          "0": 0.8685367822097907,
+          "1": 0.6291354474016917
+        },
+        "mIoU_all": 0.604397262994905,
+        "mIoU_no_void": 0.5667443007882705,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9432739228546153,
+          0.7386749856641434,
+          0.2795054597960473,
+          0.43080017486485805,
+          0.3634937730137969,
+          0.18539971671955013,
+          0.7374230466737179,
+          0.9767957112838412,
+          0.8224403909572643,
+          0.5661654481212154
+        ],
+        "BPP": 0.44973146975040434,
+        "PSNR": 28.894790208212413,
+        "MS_SSIM": 0.9594703352451325,
+        "BPP_per_camera": {
+          "FV": 0.50774469435215,
+          "MVL": 0.4002902603149414,
+          "MVR": 0.4181227570772171,
+          "RV": 0.47276818096637724
+        },
+        "lambda": 0.08,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.08/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.08",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.08,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.25__S": {
+        "mAP": 0.7120459995968027,
+        "AP_per_class": {
+          "0": 0.8262146892307365,
+          "1": 0.597877309962869
+        },
+        "mIoU_all": 0.5951863962200952,
+        "mIoU_no_void": 0.5568547428788626,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9401712762911879,
+          0.7282555000693087,
+          0.26928057118654325,
+          0.4160745948747907,
+          0.34581320870844245,
+          0.17637320495903205,
+          0.7337146309955411,
+          0.9752992063404745,
+          0.8132380709184264,
+          0.5536436978572048
+        ],
+        "BPP": 0.6827605938911439,
+        "PSNR": 29.085303561912735,
+        "MS_SSIM": 0.962753598690033,
+        "BPP_per_camera": {
+          "FV": 0.7662880659103394,
+          "MVL": 0.6111311453580857,
+          "MVR": 0.6362710273265839,
+          "RV": 0.7173521465063095
+        },
+        "lambda": 0.25,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.25/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.25",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.25,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L0.6__S": {
+        "mAP": 0.6797334159068544,
+        "AP_per_class": {
+          "0": 0.7879755305283254,
+          "1": 0.5714913012853836
+        },
+        "mIoU_all": 0.5877038076397445,
+        "mIoU_no_void": 0.5488360366024201,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9375137469756654,
+          0.7193166856782747,
+          0.2594673789182378,
+          0.4063690069329167,
+          0.3313670876416498,
+          0.16833060431569974,
+          0.7310916672391575,
+          0.9741778659536745,
+          0.804858097984326,
+          0.5445459347578434
+        ],
+        "BPP": 0.8720336616039276,
+        "PSNR": 29.19696057451388,
+        "MS_SSIM": 0.9643479597568512,
+        "BPP_per_camera": {
+          "FV": 0.9738961708545685,
+          "MVL": 0.7862895369529724,
+          "MVR": 0.815217696428299,
+          "RV": 0.9127312529087067
+        },
+        "lambda": 0.6,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L0.6/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L0.6",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 0.6,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_SWEEP_L2.0__S": {
+        "mAP": 0.6149196193897642,
+        "AP_per_class": {
+          "0": 0.7348466405964702,
+          "1": 0.49499259818305824
+        },
+        "mIoU_all": 0.5779635570133067,
+        "mIoU_no_void": 0.5384240644914059,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9338189897104139,
+          0.7075661407936378,
+          0.2494320095532625,
+          0.3917174274975824,
+          0.31299475294609175,
+          0.15949731877461745,
+          0.7251610518314844,
+          0.9726165452208,
+          0.7948560451981328,
+          0.5319752886070437
+        ],
+        "BPP": 1.059258817434311,
+        "PSNR": 29.292025488226418,
+        "MS_SSIM": 0.9656382572650909,
+        "BPP_per_camera": {
+          "FV": 1.178619111776352,
+          "MVL": 0.9626787900924683,
+          "MVR": 0.9922440361976623,
+          "RV": 1.1034933316707611
+        },
+        "lambda": 2.0,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/SWEEP_L2.0/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "SWEEP_L2.0",
+          "source_name": "SVS_JPC_lam0.08",
+          "lambda_": 2.0,
+          "fusion": "slim",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_NOFUSION__S": {
+        "mAP": 0.67926682851961,
+        "AP_per_class": {
+          "0": 0.8429336088414544,
+          "1": 0.5156000481977655
+        },
+        "mIoU_all": 0.6254597189513078,
+        "mIoU_no_void": 0.5892776624030412,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9510982278857066,
+          0.7680994321898631,
+          0.29758784515350345,
+          0.45392390913463,
+          0.40150491162518404,
+          0.20590244127555493,
+          0.7535465558060526,
+          0.9804369880746888,
+          0.8423963175479372,
+          0.6001005608199574
+        ],
+        "BPP": 0.2583280673623085,
+        "PSNR": 27.726086670532858,
+        "MS_SSIM": 0.9437036907672882,
+        "BPP_per_camera": {
+          "FV": 0.2901196497678757,
+          "MVL": 0.23009978950023652,
+          "MVR": 0.24217204242944718,
+          "RV": 0.27092079758644105
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_NOFUSION/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_NOFUSION",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "none",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_GEO__S": {
+        "mAP": 0.7557786009905723,
+        "AP_per_class": {
+          "0": 0.874448152167046,
+          "1": 0.6371090498140984
+        },
+        "mIoU_all": 0.6196246554883,
+        "mIoU_no_void": 0.5830186330300954,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9490788576121428,
+          0.7602167206299808,
+          0.2934471916535658,
+          0.4448573775963439,
+          0.3912780919485738,
+          0.1987182541032883,
+          0.7493550261961808,
+          0.979461144665416,
+          0.8369940326082437,
+          0.5928398578692642
+        ],
+        "BPP": 0.26473689287900926,
+        "PSNR": 27.888550107450243,
+        "MS_SSIM": 0.9462505114078522,
+        "BPP_per_camera": {
+          "FV": 0.2972140929102898,
+          "MVL": 0.23581283807754516,
+          "MVR": 0.24759847283363343,
+          "RV": 0.27832216024398804
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_GEO/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_GEO",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "geo",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_NOCGEO__S": {
+        "mAP": 0.7562160132331357,
+        "AP_per_class": {
+          "0": 0.8785042551748711,
+          "1": 0.6339277712914004
+        },
+        "mIoU_all": 0.6169374199970294,
+        "mIoU_no_void": 0.5801358745812426,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9481513287391113,
+          0.7548075967175463,
+          0.29311448210476415,
+          0.43914696407694315,
+          0.3857922164995581,
+          0.19904923429486013,
+          0.7477640660949593,
+          0.979077190068436,
+          0.8352835681403411,
+          0.5871875532337744
+        ],
+        "BPP": 0.26375815480947495,
+        "PSNR": 27.880557466554833,
+        "MS_SSIM": 0.9460903406143188,
+        "BPP_per_camera": {
+          "FV": 0.2958978545665741,
+          "MVL": 0.23493370950222014,
+          "MVR": 0.2471623682975769,
+          "RV": 0.2770386955142021
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_NOCGEO/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_NOCGEO",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "slim",
+          "codec_geo": false,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      },
+      "JOINT_ABL_HEAVY__S": {
+        "mAP": 0.7708075348233705,
+        "AP_per_class": {
+          "0": 0.8991590858034993,
+          "1": 0.6424559838432415
+        },
+        "mIoU_all": 0.6249852407674441,
+        "mIoU_no_void": 0.5887274446749609,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9513054055997924,
+          0.7673271810834529,
+          0.29919269298762524,
+          0.45400789151238025,
+          0.39677341748864325,
+          0.20523398010761454,
+          0.754076462459696,
+          0.9805999348674295,
+          0.8427456069089977,
+          0.5985898346588094
+        ],
+        "BPP": 0.26314254075288773,
+        "PSNR": 27.90337757439644,
+        "MS_SSIM": 0.9464134395122528,
+        "BPP_per_camera": {
+          "FV": 0.295175818502903,
+          "MVL": 0.23456726163625718,
+          "MVR": 0.24647000789642334,
+          "RV": 0.2763570749759674
+        },
+        "lambda": 0.03,
+        "checkpoint": "/media/PorableSSD/Work/Academic/PHDWork/development/MTL/WoodScapeGit/omnidet/pretrained_models/MyModel/MTL_bitrates/JOINT/ABL_HEAVY/models/weights_40",
+        "bn_mode": {
+          "encoder": "running_stats"
+        },
+        "joint": {
+          "tag": "ABL_HEAVY",
+          "source_name": "SVS_JPC_lam0.03",
+          "lambda_": 0.03,
+          "fusion": "heavy",
+          "codec_geo": true,
+          "nocodec": false,
+          "epochs": 40
+        },
+        "perception_path": "sender (encoder features of the original images)"
+      }
+    },
+    "codecs": {
+      "HM HEVC QP24": {
+        "mAP": 0.7103056877765153,
+        "AP_per_class": {
+          "0": 0.8900582772745572,
+          "1": 0.5305530982784734
+        },
+        "mIoU_all": 0.6418115331810833,
+        "mIoU_no_void": 0.607342143902706,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9520360366864785,
+          0.8053289507191934,
+          0.30561066880980486,
+          0.4960703838465902,
+          0.4453622458261612,
+          0.2473232321772779,
+          0.7564130164429888,
+          0.9744686874702059,
+          0.811722269946179,
+          0.6237798398859534
+        ],
+        "BPP": 0.9638562091503268,
+        "PSNR": 35.99101257100615,
+        "MS_SSIM": 0.9888504588603974
+      },
+      "HM HEVC QP24 (BASE_FT)": {
+        "mAP": 0.6988119044805357,
+        "AP_per_class": {
+          "0": 0.8792513566012166,
+          "1": 0.5183724523598546
+        },
+        "mIoU_all": 0.6439999599593194,
+        "mIoU_no_void": 0.6094591464309276,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9548672817148462,
+          0.797031269978713,
+          0.3120368588201328,
+          0.4834082350348317,
+          0.4413371404126448,
+          0.24374128560453007,
+          0.7717353033702715,
+          0.981307289402839,
+          0.8523542088061684,
+          0.6021807264482172
+        ],
+        "BPP": 0.9638562091503268,
+        "PSNR": 35.99101257100615,
+        "MS_SSIM": 0.9888504588603974,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP27": {
+        "mAP": 0.6673010543025016,
+        "AP_per_class": {
+          "0": 0.8625820297898791,
+          "1": 0.47202007881512426
+        },
+        "mIoU_all": 0.6272494864947525,
+        "mIoU_no_void": 0.5925657938068551,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9394027206858291,
+          0.8019976746514028,
+          0.29234586575907756,
+          0.4826076219426814,
+          0.42728343816273634,
+          0.2399193364695735,
+          0.7499468951355944,
+          0.9603853715889381,
+          0.7687784808174636,
+          0.6098274597342285
+        ],
+        "BPP": 0.6783392054738562,
+        "PSNR": 34.432850114925,
+        "MS_SSIM": 0.9826587918400764
+      },
+      "HM HEVC QP27 (BASE_FT)": {
+        "mAP": 0.6750711746792485,
+        "AP_per_class": {
+          "0": 0.8549549346513764,
+          "1": 0.4951874147071206
+        },
+        "mIoU_all": 0.6351733603093438,
+        "mIoU_no_void": 0.6001640253376459,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9502573750546247,
+          0.793440672247783,
+          0.30115250232511376,
+          0.4736785183182371,
+          0.4255594862324289,
+          0.23416940365553707,
+          0.7682704670983073,
+          0.9781344608017444,
+          0.8387946384858365,
+          0.5882760788738254
+        ],
+        "BPP": 0.6783392054738562,
+        "PSNR": 34.432850114925,
+        "MS_SSIM": 0.9826587918400764,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP30": {
+        "mAP": 0.6000214329886808,
+        "AP_per_class": {
+          "0": 0.8025082401827646,
+          "1": 0.3975346257945972
+        },
+        "mIoU_all": 0.601897749743715,
+        "mIoU_no_void": 0.5672152838463441,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9140399428200526,
+          0.7945938984742136,
+          0.25721829549584296,
+          0.46918976771787047,
+          0.40283398552905897,
+          0.22756954085042932,
+          0.7354510274610434,
+          0.9306347364226738,
+          0.7001936302737918,
+          0.5872526723921723
+        ],
+        "BPP": 0.46922972834967325,
+        "PSNR": 32.97688336713572,
+        "MS_SSIM": 0.9743856507539749
+      },
+      "HM HEVC QP30 (BASE_FT)": {
+        "mAP": 0.6302016871021063,
+        "AP_per_class": {
+          "0": 0.8261247511870803,
+          "1": 0.4342786230171324
+        },
+        "mIoU_all": 0.6201903271604231,
+        "mIoU_no_void": 0.5846686435293573,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9398854798400157,
+          0.7847526245624876,
+          0.2794386616100487,
+          0.45974108546299075,
+          0.40497568144441726,
+          0.2205738073188399,
+          0.7606224622280294,
+          0.9703146820605104,
+          0.8156551981472635,
+          0.5659435889296285
+        ],
+        "BPP": 0.46922972834967325,
+        "PSNR": 32.97688336713572,
+        "MS_SSIM": 0.9743856507539749,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP33": {
+        "mAP": 0.502237361106713,
+        "AP_per_class": {
+          "0": 0.7067170484297605,
+          "1": 0.2977576737836656
+        },
+        "mIoU_all": 0.5541279257026976,
+        "mIoU_no_void": 0.5201947571992385,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8595264422338323,
+          0.7752633091813775,
+          0.19400172445977298,
+          0.4251342432360956,
+          0.3587042173611549,
+          0.20513692387509289,
+          0.6913445813232961,
+          0.8701069764014765,
+          0.6256927017984107,
+          0.5363681371564684
+        ],
+        "BPP": 0.31126608455882354,
+        "PSNR": 31.36844131179164,
+        "MS_SSIM": 0.9616570925712585
+      },
+      "HM HEVC QP33 (BASE_FT)": {
+        "mAP": 0.5277270802504798,
+        "AP_per_class": {
+          "0": 0.7367216327628674,
+          "1": 0.31873252773809213
+        },
+        "mIoU_all": 0.5875543083009225,
+        "mIoU_no_void": 0.5509236670623494,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9172300794480798,
+          0.7675324265813914,
+          0.2197001610704993,
+          0.4220081865970372,
+          0.3665704492152264,
+          0.19858255400957997,
+          0.7355885171981372,
+          0.9530896311176299,
+          0.7747074884984579,
+          0.5205335892731853
+        ],
+        "BPP": 0.31126608455882354,
+        "PSNR": 31.36844131179164,
+        "MS_SSIM": 0.9616570925712585,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP36": {
+        "mAP": 0.37075949253445173,
+        "AP_per_class": {
+          "0": 0.5271150706411164,
+          "1": 0.2144039144277871
+        },
+        "mIoU_all": 0.4937498725911437,
+        "mIoU_no_void": 0.4616232081169705,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7828898528587018,
+          0.7411675662546868,
+          0.12258790737564322,
+          0.3496041303759975,
+          0.306525498412065,
+          0.18177105994967935,
+          0.6233776094196638,
+          0.784325481642271,
+          0.5783885545556625,
+          0.4668610650670657
+        ],
+        "BPP": 0.20676598243464053,
+        "PSNR": 29.95040241988787,
+        "MS_SSIM": 0.9467916914820671
+      },
+      "HM HEVC QP36 (BASE_FT)": {
+        "mAP": 0.4119311710484081,
+        "AP_per_class": {
+          "0": 0.5853950963391553,
+          "1": 0.23846724575766087
+        },
+        "mIoU_all": 0.5406308272189004,
+        "mIoU_no_void": 0.5035634383718648,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8742373268422203,
+          0.7389122652877934,
+          0.15192789183775662,
+          0.36542004210719026,
+          0.31512374308931024,
+          0.17697462413603063,
+          0.6913248672966118,
+          0.9165304818070574,
+          0.7162020164823304,
+          0.45965501330270275
+        ],
+        "BPP": 0.20676598243464053,
+        "PSNR": 29.95040241988787,
+        "MS_SSIM": 0.9467916914820671,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP39": {
+        "mAP": 0.26951757548822397,
+        "AP_per_class": {
+          "0": 0.40614697996405796,
+          "1": 0.13288817101239
+        },
+        "mIoU_all": 0.4138005466060948,
+        "mIoU_no_void": 0.3826435072919565,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6942139004333386,
+          0.6776848617856079,
+          0.05792819188558375,
+          0.2546083745885997,
+          0.23364773516407206,
+          0.14280027273458773,
+          0.4981309826977719,
+          0.6729287900396107,
+          0.5023798331011337,
+          0.4036825236306411
+        ],
+        "BPP": 0.13704427083333331,
+        "PSNR": 28.633312609431417,
+        "MS_SSIM": 0.930020222067833
+      },
+      "HM HEVC QP39 (BASE_FT)": {
+        "mAP": 0.3011590831793256,
+        "AP_per_class": {
+          "0": 0.4446357099271798,
+          "1": 0.15768245643147144
+        },
+        "mIoU_all": 0.473801250227545,
+        "mIoU_no_void": 0.4369122762477531,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.805802016045672,
+          0.6870525046290692,
+          0.07820368505243201,
+          0.27738688755176993,
+          0.2581323109966628,
+          0.1424376999903035,
+          0.6009077551677636,
+          0.8543406702824277,
+          0.6251909415829984,
+          0.40855803097635124
+        ],
+        "BPP": 0.13704427083333331,
+        "PSNR": 28.633312609431417,
+        "MS_SSIM": 0.930020222067833,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP42": {
+        "mAP": 0.14835635527366597,
+        "AP_per_class": {
+          "0": 0.231430802961954,
+          "1": 0.06528190758537794
+        },
+        "mIoU_all": 0.31375209421070316,
+        "mIoU_no_void": 0.28086659659249774,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6097215727745522,
+          0.5667825588282629,
+          0.015921266067801695,
+          0.12909702544209234,
+          0.15331053407788578,
+          0.10328260692542404,
+          0.2951851437242683,
+          0.5480307770597239,
+          0.4022140993557825,
+          0.3139753578512381
+        ],
+        "BPP": 0.08952282475490195,
+        "PSNR": 27.271532721377312,
+        "MS_SSIM": 0.9081311145424843
+      },
+      "HM HEVC QP42 (BASE_FT)": {
+        "mAP": 0.15512564695724326,
+        "AP_per_class": {
+          "0": 0.23711963506278722,
+          "1": 0.07313165885169931
+        },
+        "mIoU_all": 0.3805665120741413,
+        "mIoU_no_void": 0.3428235579718014,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7202530989952004,
+          0.5973265342695623,
+          0.029525335574877198,
+          0.16419423618272527,
+          0.17062913514485684,
+          0.1021617363906879,
+          0.42525304957176224,
+          0.763329125363176,
+          0.49918848737213617,
+          0.3338043818764289
+        ],
+        "BPP": 0.08952282475490195,
+        "PSNR": 27.271532721377312,
+        "MS_SSIM": 0.9081311145424843,
+        "perception": "JOINT_BASE_FT"
+      },
+      "HM HEVC QP45": {
+        "mAP": 0.08581002503933423,
+        "AP_per_class": {
+          "0": 0.1436898010033367,
+          "1": 0.027930249075331766
+        },
+        "mIoU_all": 0.2225666942388381,
+        "mIoU_no_void": 0.18867760243995718,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5275685204287662,
+          0.41249017471724275,
+          0.004610284695526213,
+          0.04391151212948672,
+          0.08684947001979502,
+          0.061429428001923046,
+          0.14508430571701078,
+          0.407083597532994,
+          0.32946494642216,
+          0.2071747027234761
+        ],
+        "BPP": 0.057526552287581696,
+        "PSNR": 25.92999813162729,
+        "MS_SSIM": 0.8787770164012909
+      },
+      "HM HEVC QP45 (BASE_FT)": {
+        "mAP": 0.08898020318788036,
+        "AP_per_class": {
+          "0": 0.14421706247028773,
+          "1": 0.03374334390547297
+        },
+        "mIoU_all": 0.28556627797643885,
+        "mIoU_no_void": 0.24824257135443592,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6214796375744652,
+          0.4775496111668283,
+          0.004875481315271891,
+          0.0697035975563768,
+          0.10933299447636671,
+          0.061317808150720875,
+          0.23578643341839456,
+          0.6347460388665397,
+          0.39027670212960996,
+          0.25059447510981436
+        ],
+        "BPP": 0.057526552287581696,
+        "PSNR": 25.92999813162729,
+        "MS_SSIM": 0.8787770164012909,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl10": {
+        "mAP": 0.6117259027979058,
+        "AP_per_class": {
+          "0": 0.7882579901461022,
+          "1": 0.4351938154497096
+        },
+        "mIoU_all": 0.5742586522008344,
+        "mIoU_no_void": 0.5372490613439103,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9073449699131498,
+          0.7655128894098349,
+          0.19869333808938244,
+          0.48465560412946657,
+          0.39264687195561015,
+          0.20492966597886314,
+          0.6599201796639287,
+          0.915387152300408,
+          0.6194693675308197,
+          0.5940264830368798
+        ],
+        "BPP": 1.1982641441993462,
+        "PSNR": 32.048772874576805,
+        "MS_SSIM": 0.9630694526433945
+      },
+      "JPEG2000 cl10 (BASE_FT)": {
+        "mAP": 0.6499477708345038,
+        "AP_per_class": {
+          "0": 0.8285968563412852,
+          "1": 0.47129868532772246
+        },
+        "mIoU_all": 0.6038938123966817,
+        "mIoU_no_void": 0.5671770061916076,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.9343450682423483,
+          0.7567597423794152,
+          0.25236240151701483,
+          0.46918305780137565,
+          0.38930197960125723,
+          0.2017887510234931,
+          0.7104583241960886,
+          0.9663609892956591,
+          0.7836463954051883,
+          0.5747314145049757
+        ],
+        "BPP": 1.1982641441993462,
+        "PSNR": 32.048772874576805,
+        "MS_SSIM": 0.9630694526433945,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl15": {
+        "mAP": 0.4651270886229256,
+        "AP_per_class": {
+          "0": 0.6061140584025,
+          "1": 0.32414011884335125
+        },
+        "mIoU_all": 0.5069102607126046,
+        "mIoU_no_void": 0.47132923580445024,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.827139484885993,
+          0.7172120884637796,
+          0.1035070514616606,
+          0.4344537326170019,
+          0.34750291488534785,
+          0.17889648226746277,
+          0.5942013912736335,
+          0.8255315187858563,
+          0.5079432041662711,
+          0.5327147383190384
+        ],
+        "BPP": 0.7986637050653594,
+        "PSNR": 30.235976645061843,
+        "MS_SSIM": 0.9479971688985824
+      },
+      "JPEG2000 cl15 (BASE_FT)": {
+        "mAP": 0.5308432369704593,
+        "AP_per_class": {
+          "0": 0.6765662884313841,
+          "1": 0.38512018550953453
+        },
+        "mIoU_all": 0.5514564001970145,
+        "mIoU_no_void": 0.5132815204433554,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.8950303179799461,
+          0.7092529739132709,
+          0.17393939393939395,
+          0.4258268999220908,
+          0.3376238640875357,
+          0.17304814366681526,
+          0.6640544861976073,
+          0.9339074827955594,
+          0.6871004583593476,
+          0.5147799811085776
+        ],
+        "BPP": 0.7986637050653594,
+        "PSNR": 30.235976645061843,
+        "MS_SSIM": 0.9479971688985824,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl25": {
+        "mAP": 0.2736659309994395,
+        "AP_per_class": {
+          "0": 0.3662564936147612,
+          "1": 0.1810753683841178
+        },
+        "mIoU_all": 0.4016487767924694,
+        "mIoU_no_void": 0.36869747461285657,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.698210496408985,
+          0.6308162455121532,
+          0.015938000629852258,
+          0.3135327506702079,
+          0.27312517424031224,
+          0.13247304161839407,
+          0.4229035729010589,
+          0.6721390382638811,
+          0.42278024658130037,
+          0.43456920109854913
+        ],
+        "BPP": 0.479006076388889,
+        "PSNR": 28.29403080663229,
+        "MS_SSIM": 0.9262159815430642
+      },
+      "JPEG2000 cl25 (BASE_FT)": {
+        "mAP": 0.3210826875140816,
+        "AP_per_class": {
+          "0": 0.4242311273569459,
+          "1": 0.21793424767121725
+        },
+        "mIoU_all": 0.45189911967920376,
+        "mIoU_no_void": 0.4134056005235853,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.7983407920797703,
+          0.6267482214002709,
+          0.0450540829056861,
+          0.32099642566171893,
+          0.26068599830914113,
+          0.13009581509301377,
+          0.5340307933721228,
+          0.8403620135917403,
+          0.5361692781240817,
+          0.4265077762544921
+        ],
+        "BPP": 0.479006076388889,
+        "PSNR": 28.29403080663229,
+        "MS_SSIM": 0.9262159815430642,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl50": {
+        "mAP": 0.09459131332968372,
+        "AP_per_class": {
+          "0": 0.14580386302673765,
+          "1": 0.043378763632629797
+        },
+        "mIoU_all": 0.24394039020965597,
+        "mIoU_no_void": 0.2114243467794314,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5365847810816775,
+          0.4263498968650038,
+          0.00032357906584130555,
+          0.09616140001720842,
+          0.1624573515969504,
+          0.04753123531700121,
+          0.15155664426438875,
+          0.414994922069596,
+          0.32022536506841437,
+          0.28321872675047816
+        ],
+        "BPP": 0.23943678513071895,
+        "PSNR": 26.06037419212837,
+        "MS_SSIM": 0.8847470849752426
+      },
+      "JPEG2000 cl50 (BASE_FT)": {
+        "mAP": 0.1113403179591399,
+        "AP_per_class": {
+          "0": 0.16743074210535303,
+          "1": 0.05524989381292676
+        },
+        "mIoU_all": 0.2943252164151987,
+        "mIoU_no_void": 0.25769900895698333,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.6239610835391368,
+          0.45513786180261295,
+          0.002847073457259346,
+          0.12522530873734408,
+          0.1529102729680625,
+          0.056735537725140166,
+          0.24733146096229477,
+          0.6147038284014367,
+          0.3579248930923591,
+          0.30647484346634063
+        ],
+        "BPP": 0.23943678513071895,
+        "PSNR": 26.06037419212837,
+        "MS_SSIM": 0.8847470849752426,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl75": {
+        "mAP": 0.05057801593744228,
+        "AP_per_class": {
+          "0": 0.08115288439172527,
+          "1": 0.020003147483159282
+        },
+        "mIoU_all": 0.16666689403305107,
+        "mIoU_no_void": 0.1331473751469978,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.46834256400753055,
+          0.2724893190103349,
+          0.0,
+          0.031948426338048244,
+          0.10113494997787248,
+          0.02125178414163807,
+          0.05071589957096799,
+          0.26346678108650284,
+          0.2613684644126256,
+          0.1959507517849898
+        ],
+        "BPP": 0.159656352124183,
+        "PSNR": 24.905238730636146,
+        "MS_SSIM": 0.8547817751765251
+      },
+      "JPEG2000 cl75 (BASE_FT)": {
+        "mAP": 0.06502077039141285,
+        "AP_per_class": {
+          "0": 0.10132138429997138,
+          "1": 0.028720156482854333
+        },
+        "mIoU_all": 0.21100258659665655,
+        "mIoU_no_void": 0.17469571466105802,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.5377644340170431,
+          0.3199599860986466,
+          0.00011216578102435399,
+          0.04990611979264069,
+          0.10044957890985672,
+          0.028337611088821595,
+          0.10855846066401417,
+          0.4548458293218123,
+          0.27365399191887846,
+          0.2364376883738271
+        ],
+        "BPP": 0.159656352124183,
+        "PSNR": 24.905238730636146,
+        "MS_SSIM": 0.8547817751765251,
+        "perception": "JOINT_BASE_FT"
+      },
+      "JPEG2000 cl95": {
+        "mAP": 0.03329970999208284,
+        "AP_per_class": {
+          "0": 0.05515533604370224,
+          "1": 0.011444083940463447
+        },
+        "mIoU_all": 0.1359835831869949,
+        "mIoU_no_void": 0.10199337814729365,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.44189542854430597,
+          0.19356594179689565,
+          0.0,
+          0.015713929206816885,
+          0.07780060837513433,
+          0.010858816001241008,
+          0.022404855873145415,
+          0.2005145519866118,
+          0.24000604143626408,
+          0.1570756586495338
+        ],
+        "BPP": 0.12615630106209152,
+        "PSNR": 24.279289962385292,
+        "MS_SSIM": 0.8337740939855576
+      },
+      "JPEG2000 cl95 (BASE_FT)": {
+        "mAP": 0.0415709119694984,
+        "AP_per_class": {
+          "0": 0.06931982524844589,
+          "1": 0.013821998690550915
+        },
+        "mIoU_all": 0.1745057971844179,
+        "mIoU_no_void": 0.13840123406344965,
+        "n_tuples_det": 50,
+        "IoU_per_class": [
+          0.49944686527313176,
+          0.23938503621696283,
+          0.0004083241812396159,
+          0.02669822980391853,
+          0.08295178639957748,
+          0.015624813777486443,
+          0.06175271696462031,
+          0.3757613483999329,
+          0.24281390046387294,
+          0.2002149503634358
+        ],
+        "BPP": 0.12615630106209152,
+        "PSNR": 24.279289962385292,
+        "MS_SSIM": 0.8337740939855576,
+        "perception": "JOINT_BASE_FT"
+      }
+    }
+  }
+}
