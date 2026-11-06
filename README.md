@@ -30,10 +30,12 @@ tail -f logs/full.log
 bash run_svs_steps.sh stop        # stop everything safely
 ```
 
-## Main result (SVS-JPC+, test tuples, `results/full/results_full.json`)
+## Main result (SVS-JPC+, test tuples, `results/full/results_full.json` and `results/full_low/results_full_low.json`)
 
 | λ | bpp | PSNR | Δ vs JPEG2000 | MS-SSIM Δ vs HEVC | On-board mAP / mIoU | ΔmAP vs perception-only (same schedule) |
 |---|---|---|---|---|---|---|
+| 0.001 | 0.056 | 26.24 | – | +0.037 (PSNR +0.4 dB vs HEVC) | 79.2 / 62.5 | +4.5 (sig.) |
+| 0.003 | 0.117 | 27.24 | +3.2 dB | +0.015 | 79.3 / 62.5 | +4.6 (sig.) |
 | 0.01 | 0.267 | 29.25 | +2.8 dB | +0.006 | 78.8 / 62.4 | +4.1 (sig.) |
 | 0.03 | 0.497 | 30.83 | +2.4 dB | +0.000 | 79.1 / 62.4 | +4.4 (sig.) |
 | 0.1 | 0.810 | 31.60 | +1.3 dB | −0.004 | 78.6 / 62.3 | +3.9 (sig.) |
